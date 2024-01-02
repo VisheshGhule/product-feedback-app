@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { initFlowbite } from 'flowbite';
+import { ButtonComponent } from './components/buttons/button/button.component';
+import { GoBackButtonComponent } from './components/buttons/go-back-button/go-back-button.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatSlideToggleModule],
+  imports: [CommonModule, RouterOutlet, ButtonComponent, GoBackButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
