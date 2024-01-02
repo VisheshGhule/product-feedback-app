@@ -51,7 +51,7 @@ module.exports = {
           fontWeight: "700",
         },
       ],
-      " ": [
+      s7: [
         "24px",
         {
           lineHeight: "35px",
