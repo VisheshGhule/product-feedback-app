@@ -10,7 +10,7 @@ module.exports = {
         "13px",
         {
           lineHeight: "19px",
-          fontWeight: "400",
+          fontWeight: "600",
         },
       ],
       s2: [
@@ -64,6 +64,7 @@ module.exports = {
       "rich-purple": "#AD1FEA",
       "royal-blue": "#4661E6",
       "lightest-gray": "#F2F4FE",
+      "darkest-gray": "#CFD7FF",
       "silver-cloud": "#F7F8FD",
       "deep-indigo": "#3A4374",
       "dusk-blue": "#647196",
