@@ -13,6 +13,11 @@ app-icon {
   @apply w-fit h-fit flex place-items-center !important;
 }
 
+.tag-button,
+.vote-button {
+  @apply text-s1 bg-lightest-gray rounded-custom-lg hover:bg-darkest-gray active:bg-royal-blue active:text-white transition-colors !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
