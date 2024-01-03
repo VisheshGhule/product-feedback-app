@@ -72,7 +72,12 @@ module.exports = {
       "bright-teal": "#62BCFA",
       "brick-red": "#D73737",
     },
-    extend: {},
+    extend: {
+      borderRadius: {
+        "custom-lg": "10px",
+        "custom-sm": "5px",
+      },
+    },
   },
   plugins: [require("flowbite/plugin")],
 };
