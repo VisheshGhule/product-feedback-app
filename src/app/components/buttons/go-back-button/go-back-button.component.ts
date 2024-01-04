@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './go-back-button.component.html',
 })
 export class GoBackButtonComponent {
-  @Input() text = 'Button';
   @Input() customClass = '';
   defaultClass =
     'text-s2 text-inherit rounded-lg flex items-center gap-1 hover:underline';
