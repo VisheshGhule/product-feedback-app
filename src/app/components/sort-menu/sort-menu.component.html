@@ -1,0 +1,40 @@
+<div x-data="{ isDropdown: false}" class="relative">
+  <button
+    type="menu"
+    x-on:click="isDropdown = !isDropdown"
+    class="text-s2 bg-deep-indigo rounded-custom-lg px-[17.5px] py-[26px] inline-flex place-items-center gap-1"
+  >
+    <span class="text-lightest-gray font-normal">Sort by :</span>
+    <span class="text-white"> Most Upvotes</span>
+    <mat-icon x-show="isDropdown" class="text-white"
+      >keyboard_arrow_up</mat-icon
+    >
+    <mat-icon x-show="!isDropdown" class="text-white"
+      >keyboard_arrow_down</mat-icon
+    >
+  </button>
+  <div
+    x-cloak
+    x-transition
+    x-show="isDropdown"
+    x-on:click.away="isDropdown = false"
+    x-on:keydown.escape.window="isDropdown = false"
+    class="absolute top-24 w-full z-10"
+  >
+    <ul class="text-dusk-blue text-s4 rounded-custom-lg custom-shadow">
+      @for (option of menuOptions; track $index) {
+
+      <li
+        class="px-6 py-3 border-b border-opacity-15 border-deep-indigo flex items-center justify-between"
+      >
+        <a
+          [href]="'?sort='.concat(option.href)"
+          class="lg:hover:text-rich-purple"
+          >{{ option.name }}</a
+        >
+        @if($index === 0) { <mat-icon class="text-rich-purple">done</mat-icon>}
+      </li>
+      }
+    </ul>
+  </div>
+</div>

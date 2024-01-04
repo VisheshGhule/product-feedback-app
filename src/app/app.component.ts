@@ -6,7 +6,7 @@ import { ButtonComponent } from './components/buttons/button/button.component';
 import { GoBackButtonComponent } from './components/buttons/go-back-button/go-back-button.component';
 import { TagButtonComponent } from './components/buttons/tag-button/tag-button.component';
 import { VoteButtonComponent } from './components/buttons/vote-button/vote-button.component';
-import { IconComponent } from './components/icon/icon.component';
+import { SortMenuComponent } from './components/sort-menu/sort-menu.component';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,8 @@ import { IconComponent } from './components/icon/icon.component';
     ButtonComponent,
     GoBackButtonComponent,
     TagButtonComponent,
-    VoteButtonComponent
+    VoteButtonComponent,
+    SortMenuComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
