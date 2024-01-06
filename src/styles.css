@@ -25,6 +25,23 @@ app-vote-button {
   @apply inline !important;
 }
 
+app-form-control {
+  @apply flex flex-col gap-3 !important;
+}
+
+app-form-control select,
+app-form-control input {
+  @apply bg-silver-cloud text-s3 text-deep-indigo px-6 py-[13px] border-none ring-0 rounded-custom-sm w-full focus:border-none hover:cursor-pointer focus:cursor-text transition-all !important;
+}
+
+.form-control-valid {
+  @apply focus:outline focus:outline-1 focus:outline-dusk-blue;
+}
+
+.form-control-invalid {
+  @apply outline outline-1 outline-brick-red focus:outline-brick-red;
+}
+
 @layer utilities {
   .custom-shadow {
     box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.35);
