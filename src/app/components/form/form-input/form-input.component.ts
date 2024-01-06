@@ -1,27 +1,28 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { FormLabelComponent } from '../form-label/form-label.component';
 
 @Component({
   selector: 'app-form-input',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormLabelComponent],
   template: `
-    <label class="flex flex-col gap-3">
-      <ng-content></ng-content>
-      <input [type]="inputType || 'text'" [class]="getClass()" />
+    <div>
+      <input [type]="inputType || 'text'" [class]="getClass()" [id]="inputId" />
       @if (errorMsg) {
-      <p class="text-s2 font-normal text-brick-red mt-1">{{ errorMsg }}</p>
+      <p class="text-s2 font-normal text-brick-red mt-1">
+        {{ errorMsg }}
+      </p>
       }
-    </label>
+    </div>
   `,
 })
 export class FormInputComponent {
   @Input() inputType!: string;
+  @Input() inputId!: string;
   @Input() errorMsg = '';
 
   getClass(): string {
-    return this.errorMsg
-      ? 'form-input form-control-invalid'
-      : 'form-input form-control-valid';
+    return this.errorMsg ? 'form-control-invalid' : 'form-control-valid';
   }
 }
