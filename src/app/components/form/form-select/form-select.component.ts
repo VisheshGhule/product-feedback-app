@@ -11,6 +11,7 @@ import { FormLabelComponent } from '../form-label/form-label.component';
 export class FormSelectComponent implements OnInit {
   @Input() options: Array<{ name: string; value: string }> = [];
   @Input() selectId!: string;
+  @Input() errorMsg = '';
   selectedItem = '';
 
   ngOnInit(): void {

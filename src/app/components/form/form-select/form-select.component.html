@@ -1,41 +1,57 @@
-<div x-data="{ isDropdown: false }" class="relative form-control">
-  <select
-    [id]="selectId"
-    (mousedown)="preventDefault($event)"
-    x-on:click="isDropdown = true"
-  >
+<div x-data="{ isDropdown: false }" class="relative">
+  <div class="relative">
+    <button
+      type="button"
+      [id]="selectId"
+      x-bind:class="{'custom-select flex justify-between items-center': true, 'outline outline-1 outline-deep-indigo': isDropdown}"
+      x-on:click="isDropdown = !isDropdown"
+    >
+      {{ selectedItem }}
+      <mat-icon x-show="isDropdown === true" class="text-deep-indigo"
+        >keyboard_arrow_up</mat-icon
+      >
+      <mat-icon x-show="isDropdown === false" class="text-deep-indigo"
+        >keyboard_arrow_down</mat-icon
+      >
+    </button>
+    <div
+      x-cloak
+      x-transition
+      x-show="isDropdown"
+      x-on:click.away="isDropdown = false"
+      x-on:keydown.escape.window="isDropdown = false"
+      class="w-full bg-white absolute top-16 z-40"
+    >
+      <ul class="text-dusk-blue text-s4 rounded-custom-lg custom-shadow">
+        @for (option of options; track $index) {
+        <li
+          class="px-6 py-3 border-b border-opacity-15 border-deep-indigo flex items-center justify-between hover:text-rich-purple hover:cursor-pointer"
+          x-on:click="isDropdown = false"
+        >
+          <button
+            type="button"
+            class="w-full flex justify-between"
+            (click)="handleSelection($index)"
+          >
+            {{ option.name }}
+            @if (option.name === selectedItem){<mat-icon
+              class="text-rich-purple"
+              >done</mat-icon
+            >}
+          </button>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+  @if (errorMsg) {
+  <p class="form-control-error">{{ errorMsg }}</p>
+  }
+  <select [id]="selectId" class="absolute top-0 -z-10 invisible">
     @for (option of options; track $index) {
     <option [value]="option.value" [selected]="selectedItem === option.name">
       {{ option.name }}
     </option>
     }
   </select>
-  <div
-    x-cloak
-    x-transition
-    x-show="isDropdown"
-    x-on:click.away="isDropdown = false"
-    x-on:keydown.escape.window="isDropdown = false"
-    class="w-full bg-white absolute top-16 z-40"
-  >
-    <ul class="text-dusk-blue text-s4 rounded-custom-lg custom-shadow">
-      @for (option of options; track $index) {
-      <li
-        class="px-6 py-3 border-b border-opacity-15 border-deep-indigo flex items-center justify-between hover:text-rich-purple hover:cursor-pointer"
-        x-on:click="isDropdown = false"
-      >
-        <button
-          type="button"
-          class="w-full flex justify-between"
-          (click)="handleSelection($index)"
-        >
-          {{ option.name }}
-          @if (option.name === selectedItem){<mat-icon class="text-rich-purple"
-            >done</mat-icon
-          >}
-        </button>
-      </li>
-      }
-    </ul>
-  </div>
 </div>
