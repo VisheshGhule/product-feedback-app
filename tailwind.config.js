@@ -71,6 +71,7 @@ module.exports = {
       peach: "#F49F85",
       "bright-teal": "#62BCFA",
       "brick-red": "#D73737",
+      white: "#FFFFFF",
     },
     extend: {
       borderRadius: {
