@@ -19,7 +19,7 @@
     x-show="isDropdown"
     x-on:click.away="isDropdown = false"
     x-on:keydown.escape.window="isDropdown = false"
-    class="absolute top-24 w-full z-10"
+    class="absolute top-24 w-full z-10 bg-white"
   >
     <ul class="text-dusk-blue text-s4 rounded-custom-lg custom-shadow">
       @for (option of menuOptions; track $index) {
