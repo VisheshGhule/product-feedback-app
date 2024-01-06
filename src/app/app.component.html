@@ -20,22 +20,18 @@
     <h3 class="text-s5">Buttons</h3>
     <div class="mt-2">
       <div class="flex gap-2">
-        <app-button
-          [customClass]="'bg-rich-purple w-[158px]'"
-          [text]="'Button 1'"
-        />
-        <app-button
-          [customClass]="'bg-royal-blue w-[158px]'"
-          [text]="'Button 2'"
-        />
-        <app-button
-          [customClass]="'bg-deep-indigo w-[158px]'"
-          [text]="'Button 3'"
-        />
-        <app-button
-          [customClass]="'bg-brick-red w-[158px]'"
-          [text]="'Button 4'"
-        />
+        <app-button [customClass]="'bg-rich-purple w-[158px]'"
+          >Button 1</app-button
+        >
+        <app-button [customClass]="'bg-royal-blue w-[158px]'">
+          Button 2
+        </app-button>
+        <app-button [customClass]="'bg-deep-indigo w-[158px]'"
+          >Button 3</app-button
+        >
+        <app-button [customClass]="'bg-brick-red w-[158px]'"
+          >Button 4</app-button
+        >
       </div>
       <div class="mt-5">
         <div class="flex gap-2">
@@ -57,6 +53,41 @@
         <app-vote-button>100</app-vote-button>
       </div>
       <app-sort-menu class="w-[255px] block"></app-sort-menu>
+    </div>
+    <div class="mt-5">
+      <h3 class="text-s5">Form Elements</h3>
+      <form class="flex flex-col gap-5">
+        <app-form-control>
+          <app-form-label
+            heading="Name"
+            description="Enter your fullname"
+            htmlFor="name"
+          ></app-form-label>
+          <app-form-input inputId="name"></app-form-input>
+        </app-form-control>
+        <app-form-control>
+          <app-form-label
+            heading="Email"
+            description="Enter email address"
+            htmlFor="email"
+          ></app-form-label>
+          <app-form-input inputId="email"></app-form-input>
+        </app-form-control>
+        <app-form-control>
+          <app-form-label
+            heading="Title"
+            description="Choose title"
+            htmlFor="title"
+          ></app-form-label>
+          <app-form-select
+            selectId="titles"
+            [options]="menuOptions"
+          ></app-form-select>
+        </app-form-control>
+        <app-button [customClass]="'bg-royal-blue w-[158px]'"
+          >Submit</app-button
+        >
+      </form>
     </div>
   </section>
 </main>
