@@ -1,11 +1,11 @@
 <div x-data="{ isDropdown: false}" class="relative">
   <button
-    type="menu"
+    type="button"
     x-on:click="isDropdown = !isDropdown"
     class="text-s2 bg-deep-indigo rounded-custom-lg px-[17.5px] py-[26px] inline-flex place-items-center gap-1"
   >
     <span class="text-lightest-gray font-normal">Sort by :</span>
-    <span class="text-white"> Most Upvotes</span>
+    <span class="text-white"> {{ selectedItem }}</span>
     <mat-icon x-show="isDropdown" class="text-white"
       >keyboard_arrow_up</mat-icon
     >
@@ -24,15 +24,16 @@
     <ul class="text-dusk-blue text-s4 rounded-custom-lg custom-shadow">
       @for (option of menuOptions; track $index) {
 
-      <li
-        class="px-6 py-3 border-b border-opacity-15 border-deep-indigo flex items-center justify-between"
-      >
+      <li class="border-b border-opacity-15 border-deep-indigo">
         <a
           [href]="'?sort='.concat(option.href)"
-          class="lg:hover:text-rich-purple"
-          >{{ option.name }}</a
+          class="px-6 py-3 lg:hover:text-rich-purple w-full flex items-center justify-between"
+          (click)="handleSelection($index)"
         >
-        @if($index === 0) { <mat-icon class="text-rich-purple">done</mat-icon>}
+          {{ option.name }}
+          @if(option.name === selectedItem) {
+          <mat-icon class="text-rich-purple">done</mat-icon>}
+        </a>
       </li>
       }
     </ul>
