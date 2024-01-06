@@ -12,8 +12,8 @@ body {
   margin: 0;
 }
 
-app-icon {
-  @apply w-fit h-fit flex place-items-center !important;
+mat-icon {
+  @apply font-semibold w-fit h-fit flex place-items-center !important;
 }
 
 .tag-button,
