@@ -79,5 +79,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [require("@tailwindcss/forms")({ strategy: "global" })],
 };
