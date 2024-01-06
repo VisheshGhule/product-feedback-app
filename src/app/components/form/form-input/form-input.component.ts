@@ -10,7 +10,7 @@ import { FormLabelComponent } from '../form-label/form-label.component';
     <div>
       <input [type]="inputType || 'text'" [class]="getClass()" [id]="inputId" />
       @if (errorMsg) {
-      <p class="text-s2 font-normal text-brick-red mt-1">
+      <p class="form-control-error">
         {{ errorMsg }}
       </p>
       }

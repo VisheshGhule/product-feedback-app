@@ -13,9 +13,10 @@ body {
 }
 
 mat-icon {
-  @apply font-semibold w-fit h-fit flex place-items-center !important;
+  @apply font-semibold w-fit h-fit !important;
 }
 
+/* Interactive elements */
 .tag-button,
 .vote-button {
   @apply text-s1 bg-lightest-gray rounded-custom-lg hover:bg-darkest-gray active:bg-royal-blue active:text-white transition-colors !important;
@@ -25,12 +26,14 @@ app-vote-button {
   @apply inline !important;
 }
 
+/* Form elements */
 app-form-control {
   @apply flex flex-col gap-3 !important;
 }
 
-app-form-control select,
-app-form-control input {
+app-form-control input,
+app-form-control textarea,
+app-form-control .custom-select {
   @apply bg-silver-cloud text-s3 text-deep-indigo px-6 py-[13px] border-none ring-0 rounded-custom-sm w-full focus:border-none hover:cursor-pointer focus:cursor-text transition-all !important;
 }
 
@@ -40,6 +43,10 @@ app-form-control input {
 
 .form-control-invalid {
   @apply outline outline-1 outline-brick-red focus:outline-brick-red;
+}
+
+.form-control-error {
+  @apply text-s2 font-normal text-brick-red mt-1;
 }
 
 @layer utilities {
