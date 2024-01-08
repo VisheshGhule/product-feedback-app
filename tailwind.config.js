@@ -79,7 +79,9 @@ module.exports = {
         "custom-sm": "5px",
       },
       backgroundImage: {
-        'mobile-header': "url('/assets/images/suggestions/mobile/background-header.png')"
+        'mobile-header': "url('/assets/images/suggestions/mobile/background-header.png')",
+        'tablet-header': "url('/assets/images/suggestions/tablet/background-header.png')",
+
       }
     },
   },
