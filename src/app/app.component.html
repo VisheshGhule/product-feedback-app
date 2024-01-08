@@ -15,7 +15,35 @@
       <app-sort-menu
         [menuOptions]="[{ name: 'Most Upvotes', href: 'most-upvotes' }]"
       ></app-sort-menu>
-      <app-button [customClass]="'bg-rich-purple'">+ Add Feedback</app-button>
+      <app-button customClass="bg-rich-purple">+ Add Feedback</app-button>
     </div>
   </header>
+  <main class="text-s1 relative flex-grow">
+    <div class="bg-silver-cloud px-6 pt-8 pb-12 w-full absolute top-0 bottom-0">
+      <div
+        class="bg-white p-6 rounded-custom-lg h-full flex flex-col items-center justify-center"
+      >
+        <div class="w-[6.375rem] h-[6.75rem]">
+          <img
+            src="./assets/images/shared/illustration-empty.svg"
+            alt="empty illustration"
+            fill
+          />
+        </div>
+        <div class="text-center mt-10">
+          <h3 class="text-s5 text-deep-indigo mb-4">
+            There is no feedback yet.
+          </h3>
+          <p class="text-dusk-blue font-normal">
+            Got a suggestion? Found a bug that needs to be squashed? We love
+            hearing about new ideas to improve our app.
+          </p>
+        </div>
+        <app-button customClass="bg-rich-purple" class="mt-6"
+          >+ Add Feedback</app-button
+        >
+      </div>
+    </div>
+  </main>
+  <aside></aside>
 </div>
