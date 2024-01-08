@@ -78,6 +78,9 @@ module.exports = {
         "custom-lg": "10px",
         "custom-sm": "5px",
       },
+      backgroundImage: {
+        'mobile-header': "url('/assets/suggestions/mobile/background-header.png')"
+      }
     },
   },
   plugins: [require("@tailwindcss/forms")({ strategy: "global" })],
