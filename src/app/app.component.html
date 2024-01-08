@@ -1,113 +1,21 @@
-<main class="p-5 text-s4">
-  <h1 class="text-s7 text-royal-blue">Product Feedback App</h1>
-  <p>
-    A responsive web application challenge from
-    <a
-      href="https://www.frontendmentor.io/challenges/product-feedback-app-wbvUYqjR6"
-      class="hover:underline text-rich-purple"
-      >frontend mentors</a
+<div class="flex flex-col min-h-screen">
+  <header>
+    <div
+      class="text-white flex justify-between items-center py-4 px-6 bg-mobile-header bg-cover"
     >
-    for collecting product feedback.
-  </p>
-  <h2 class="mt-2">Built with:</h2>
-  <ul class="list-disc list-inside">
-    <li>Angular 17</li>
-    <li>TailwindCSS</li>
-    <li>Flowbite UI Library</li>
-  </ul>
-  <section class="mt-5">
-    <h2 class="text-s6">Components</h2>
-    <section>
-      <h3 class="text-s5">Buttons</h3>
-      <div class="flex flex-col gap-5">
-        <div class="flex flex-col gap-2 mt-2">
-          <app-button bgColor="rich-purple" class="w-fit">
-            + Add Feedback</app-button
-          >
-          <app-button bgColor="royal-blue" class="w-fit">
-            Edit Feedback
-          </app-button>
-          <app-button bgColor="deep-indigo" class="w-fit">Cancel</app-button>
-          <app-button bgColor="brick-red" class="w-fit">Delete</app-button>
-          <app-button bgColor="rich-purple"> + Add Feedback</app-button>
-          <app-button bgColor="royal-blue"> Edit Feedback </app-button>
-          <app-button bgColor="deep-indigo">Cancel</app-button>
-          <app-button bgColor="brick-red">Delete</app-button>
-        </div>
-        <div class="flex gap-2">
-          <app-go-back-button [customClass]="'text-dusk-blue py-2 px-5'"
-            >Go Back</app-go-back-button
-          >
-          <app-go-back-button
-            [customClass]="'text-white bg-dusk-blue py-2 px-5'"
-            >Go Back</app-go-back-button
-          >
-        </div>
-        <div class="flex gap-2">
-          <app-tag-button>All</app-tag-button>
-          <app-tag-button>UI</app-tag-button>
-          <app-tag-button>UX</app-tag-button>
-          <app-tag-button>Enhancement</app-tag-button>
-          <app-tag-button>Bug</app-tag-button>
-          <app-tag-button>Features</app-tag-button>
-        </div>
-        <div class="flex gap-2">
-          <app-vote-button>99</app-vote-button>
-          <app-vote-button>100</app-vote-button>
-        </div>
+      <div>
+        <h1 class="text-s3 font-bold">Frontend Mentor</h1>
+        <h2 class="text-s1 font-medium opacity-75">Feedback Board</h2>
       </div>
-      <div class="mt-2">
-        <div class="mt-5"></div>
-        <app-sort-menu
-          class="w-[255px] block"
-          [menuOptions]="menuOptions"
-        ></app-sort-menu>
+      <div>
+        <mat-icon>menu</mat-icon>
       </div>
-    </section>
-    <section class="mt-5">
-      <h3 class="text-s5">Form Elements</h3>
-      <form class="flex flex-col gap-5">
-        <app-form-control>
-          <app-form-label
-            heading="Name"
-            description="Enter your fullname"
-            htmlFor="name"
-          ></app-form-label>
-          <app-form-input inputId="name"></app-form-input>
-        </app-form-control>
-        <app-form-control>
-          <app-form-label
-            heading="Email"
-            description="Enter email address"
-            htmlFor="email"
-          ></app-form-label>
-          <app-form-input inputId="email"></app-form-input>
-        </app-form-control>
-        <app-form-control>
-          <app-form-label
-            heading="Title"
-            description="Choose title"
-            htmlFor="titles"
-          ></app-form-label>
-          <app-form-select
-            selectId="titles"
-            [options]="selectOptions"
-          ></app-form-select>
-        </app-form-control>
-        <app-form-control>
-          <app-form-label
-            heading="Comment"
-            description="Provide your comment"
-            htmlFor="comment"
-          ></app-form-label>
-          <app-form-textarea
-            textareaId="comment"
-            [placeholder]="'Type your text here'"
-            errorMsg="Error message"
-          ></app-form-textarea>
-        </app-form-control>
-        <app-button bgColor="royal-blue">Submit</app-button>
-      </form>
-    </section>
-  </section>
-</main>
+    </div>
+    <div class="bg-deep-indigo px-6 py-2 flex justify-between items-center">
+      <app-sort-menu
+        [menuOptions]="[{ name: 'Most Upvotes', href: 'most-upvotes' }]"
+      ></app-sort-menu>
+      <app-button [customClass]="'bg-rich-purple'">+ Add Feedback</app-button>
+    </div>
+  </header>
+</div>
