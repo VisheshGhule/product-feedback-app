@@ -8,9 +8,8 @@ import { Component, Input } from '@angular/core';
     <button
       [type]="buttonType || 'button'"
       [class]="
-        'text-s1 text-lightest-gray px-4 w-full h-[44px] rounded-custom-lg hover:bg-opacity-70 transition-colors text-center '
-          .concat('bg-')
-          .concat(bgColor)
+        'text-s1 md:text-s2 text-lightest-gray font-semibold px-4 py-2.5 md:px-6 md:py-3 rounded-custom-lg hover:bg-opacity-70 transition-colors text-center '
+          .concat(customClass)
       "
     >
       <ng-content></ng-content>
