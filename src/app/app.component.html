@@ -1,6 +1,6 @@
 <div class="bg-silver-cloud md:px-10 md:py-12 lg:flex lg:justify-center">
   <div
-    class="min-h-screen lg:w-11/12 xl:w-9/12 flex flex-col lg:flex-row lg:gap-5"
+    class="min-h-screen w-full lg:w-11/12 xl:w-10/12 flex flex-col lg:flex-row lg:gap-5"
   >
     <aside
       class="hidden md:flex lg:flex-col gap-2 lg:gap-6 mb-10 h-[11.125rem] lg:h-fit lg:w-[15.9375rem]"
@@ -63,9 +63,18 @@
       <div
         class="bg-deep-indigo px-6 py-2 md:p-3.5 md:px-3 md:rounded-custom-lg flex justify-between items-center"
       >
-        <app-sort-menu
-          [menuOptions]="[{ name: 'Most Upvotes', href: 'most-upvotes' }]"
-        ></app-sort-menu>
+        <div class="flex gap-8 items-center">
+          <div class="md:flex items-center gap-4 px-2.5 hidden">
+            <img
+              src="/assets/images/shared/icon-suggestions.svg"
+              alt="bulb icon"
+            />
+            <span class="text-s5 text-white">0 Suggestions</span>
+          </div>
+          <app-sort-menu
+            [menuOptions]="[{ name: 'Most Upvotes', href: 'most-upvotes' }]"
+          ></app-sort-menu>
+        </div>
         <app-button customClass="bg-rich-purple">+ Add Feedback</app-button>
       </div>
       <div
