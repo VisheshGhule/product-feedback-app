@@ -1,1 +1,106 @@
-<p>new-feedback-page</p>
+<div
+  class="text-s1 md:text-s2 font-normal px-6 pt-5 pb-10 md:py-10 lg:py-20 min-h-full"
+>
+  <div class="max-w-[33.75rem] mx-auto">
+    <div class="py-5">
+      <button
+        type="button"
+        class="text-dusk-blue font-bold inline-flex gap-3.5 items-center"
+      >
+        <svg
+          width="6"
+          height="10"
+          viewBox="0 0 6 10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4.33447 9L0.334473 5L4.33447  1"
+            stroke="#4661E6"
+            stroke-width="2"
+          />
+        </svg>
+        Go Back
+      </button>
+    </div>
+    <div
+      class="bg-white px-7 md:px-10 pt-2 pb-7 md:pb-10 mt-14 md:mt-12 rounded-xl mb-8 relative"
+    >
+      <div
+        class="w-[3.5rem] h-[3.5rem] bg-gr rounded-full inline-flex items-center justify-center absolute -top-7 bg-icon-gradient"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 12 12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.67317 11.7142V7.54689H11.7353V4.47402H7.67317V0.285645H4.38983V4.47402H0.285645V7.54689H4.38983V11.7142H7.67317Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+      <h1
+        class="text-s6 md:text-s7 mt-6 font-bold pt-5 pb-7 md:pb-10 text-deep-indigo"
+      >
+        Create New Feedback
+      </h1>
+      <form class="flex flex-col gap-7">
+        <label class="flex flex-col gap-1">
+          <span class="font-bold text-deep-indigo">Feedback Title</span>
+          <span class="text-medium-gray font-normal"
+            >Add a short, descriptive headline</span
+          >
+          <input
+            type="text"
+            class="text-s3 text-deep-indigo rounded border-none focus:outline focus:outline-dusk-blue bg-lightest-gray px-4 md:px-5 py-3 lg:py-4 mt-3.5 h-[48px]"
+          />
+        </label>
+        <label class="flex flex-col gap-1">
+          <span class="font-bold text-deep-indigo">Category</span>
+          <span class="text-medium-gray font-normal"
+            >Choose a category for your feedback</span
+          >
+          <select
+            class="text-s3 text-deep-indigo rounded border-none focus:outline focus:outline-dusk-blue bg-lightest-gray px-4 md:px-5 py-3 mt-3.5 h-[48px]"
+            >
+            <option value="">Select a category</option>
+            <option value="feedback">Feedback</option>
+            <option value="ui">UI</option>
+            <option value="ux">UX</option>
+            <option value="enhancement">Enhancement</option>
+            <option value="bug">Bug</option>
+          </select>
+        </label>
+        <label class="flex flex-col gap-1">
+          <span class="font-bold text-deep-indigo">Feedback Detail</span>
+          <span class="text-medium-gray font-normal"
+            >Include any specific comments on what should be improved, added,
+            etc.</span
+          >
+          <textarea
+            type="text"
+            class="text-s3 text-deep-indigo h-[7.5rem] md:h-[6rem] rounded border-none focus:outline focus:outline-dusk-blue bg-lightest-gray px-4 md:px-5 py-3 lg:py-4 mt-3.5 resize-none"
+          ></textarea>
+        </label>
+        <div class="flex flex-col gap-4 mt-3.5 md:mt-1.5 md:flex-row-reverse">
+          <button
+            type="button"
+            class="font-semibold bg-rich-purple text-lightest-gray px-6 py-3 rounded-lg hover:bg-opacity-70 transition-all"
+          >
+            Add Feedback
+          </button>
+          <button
+            type="button"
+            class="font-semibold bg-deep-indigo text-lightest-gray px-6 py-3 rounded-lg hover:bg-opacity-70 transition-all"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+ 
