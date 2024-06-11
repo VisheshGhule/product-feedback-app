@@ -56,7 +56,7 @@ module.exports = {
         {
           lineHeight: "35px",
           letterSpacing: "-0.33",
-          fontWeight: 700,
+          fontWeight: "700",
         },
       ],
     },
@@ -64,6 +64,7 @@ module.exports = {
       "rich-purple": "#AD1FEA",
       "royal-blue": "#4661E6",
       "lightest-gray": "#F2F4FE",
+      "medium-gray": "#647196",
       "darkest-gray": "#CFD7FF",
       "silver-cloud": "#F7F8FD",
       "deep-indigo": "#3A4374",
@@ -81,7 +82,6 @@ module.exports = {
       backgroundImage: {
         'mobile-header': "url('/assets/images/suggestions/mobile/background-header.png')",
         'tablet-header': "url('/assets/images/suggestions/tablet/background-header.png')",
-
       }
     },
   },
