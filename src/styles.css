@@ -12,6 +12,11 @@ body {
   margin: 0;
 }
 
+app-root,
+app-new-feedback-page {
+  @apply block;
+}
+
 app-root {
   @apply bg-silver-cloud min-h-full;
 }
