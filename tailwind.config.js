@@ -84,8 +84,8 @@ module.exports = {
           "url('/assets/images/suggestions/mobile/background-header.png')",
         "tablet-header":
           "url('/assets/images/suggestions/tablet/background-header.png')",
-        "custom-gradient":
-          "icon-gradient(45deg, rgba(40,167,237,1) 0%, rgba(163,55,246,1) 50%, rgba(232,77,112,1) 100%)",
+        "icon-gradient":
+          "linear-gradient(45deg, rgba(40,167,237,1) 0%, rgba(163,55,246,1) 50%, rgba(232,77,112,1) 100%)",
       },
     },
   },
