@@ -1,1 +1,111 @@
-<p>app-home-page</p>
+<div
+  class="min-h-screen w-full lg:w-11/12 xl:w-10/12 flex flex-col lg:flex-row lg:gap-5 md:px-10 md:py-16 lg:mx-auto"
+>
+  <aside
+    class="hidden md:flex lg:flex-col gap-2 lg:gap-6 mb-10 h-[11.125rem] lg:h-fit lg:w-[15.9375rem]"
+  >
+    <div
+      class="p-6 text-white rounded-lg w-4/12 lg:h-[8.5625rem] lg:w-full bg-tablet-header bg-cover flex flex-col justify-end"
+    >
+      <h1 class="text-s6">Frontend Mentor</h1>
+      <h2 class="text-s3 opacity-75">Feedback Board</h2>
+    </div>
+    <div
+      class="p-6 bg-white rounded-lg w-4/12 lg:w-full flex flex-wrap gap-2 lg:gap-3.5"
+    >
+      <app-tag-button>All</app-tag-button>
+      <app-tag-button>UI</app-tag-button>
+      <app-tag-button>UX</app-tag-button>
+      <app-tag-button>Enhancement</app-tag-button>
+      <app-tag-button>Bug</app-tag-button>
+      <app-tag-button>Feature</app-tag-button>
+    </div>
+    <div class="text-dusk-blue p-6 bg-white w-4/12 lg:w-full rounded-lg">
+      <div class="flex justify-between">
+        <h3 class="text-s5">Roadmap</h3>
+        <a
+          href="#"
+          class="text-royal-blue underline hover:text-opacity-60 transition-all"
+          >View</a
+        >
+      </div>
+      <ul class="mt-5 flex flex-col gap-1 list-disc list-inside">
+        <li class="marker:text-peach flex justify-between">
+          <span>Planned</span>
+          <span class="text-s4 font-bold">2</span>
+        </li>
+        <li class="marker:text-rich-purple flex justify-between">
+          <span>In-Progress</span>
+          <span class="text-s4 font-bold">3</span>
+        </li>
+        <li class="marker:text-bright-teal flex justify-between">
+          <span>Live</span>
+          <span class="text-s4 font-bold">1</span>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <header>
+    <div
+      class="text-white flex justify-between items-center py-4 px-6 bg-mobile-header bg-cover md:hidden"
+    >
+      <div>
+        <h1 class="text-s3 font-bold">Frontend Mentor</h1>
+        <h2 class="text-s1 font-medium opacity-75">Feedback Board</h2>
+      </div>
+      <div>
+        <mat-icon>menu</mat-icon>
+      </div>
+    </div>
+  </header>
+  <main class="text-s1 relative flex-grow">
+    <div
+      class="bg-deep-indigo px-6 py-2 md:p-3.5 md:px-3 md:rounded-custom-lg flex justify-between items-center"
+    >
+      <div class="flex gap-8 items-center">
+        <div class="md:flex items-center gap-4 px-2.5 hidden">
+          <img
+            src="/assets/images/shared/icon-suggestions.svg"
+            alt="bulb icon"
+          />
+          <span class="text-s5 text-white">0 Suggestions</span>
+        </div>
+        <app-sort-menu
+          [menuOptions]="[{ name: 'Most Upvotes', href: 'most-upvotes' }]"
+        ></app-sort-menu>
+      </div>
+      <app-button customClass="bg-rich-purple" (clickEvent)="newFeedBack()"
+        >+ Add Feedback</app-button
+      >
+    </div>
+    <div
+      class="w-full px-5 pt-8 pb-12 md:p-0 absolute top-14 md:top-24 bottom-0"
+    >
+      <div
+        class="bg-white p-6 rounded-custom-lg h-full lg:h-[85%] xl:h-[90%] flex flex-col items-center justify-center"
+      >
+        <div
+          class="w-[6.375rem] h-[6.75rem] md:w-[8.1025rem] md:h-[8.54638rem]"
+        >
+          <img
+            src="./assets/images/shared/illustration-empty.svg"
+            alt="empty illustration"
+            fill
+          />
+        </div>
+        <div class="text-center mt-10 md:mt-5 max-w-[25.625rem]">
+          <h3 class="text-s5 md:text-s7 text-deep-indigo mb-4">
+            There is no feedback yet.
+          </h3>
+          <p class="text-s4 text-dusk-blue font-normal">
+            Got a suggestion? Found a bug that needs to be squashed? We love
+            hearing about new ideas to improve our app.
+          </p>
+        </div>
+        <app-button customClass="bg-rich-purple" class="mt-6 md:mt-12"
+          >+ Add Feedback</app-button
+        >
+      </div>
+    </div>
+  </main>
+</div>
