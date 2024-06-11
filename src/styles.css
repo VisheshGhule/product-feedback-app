@@ -5,11 +5,15 @@
 
 html,
 body {
-  height: 100%;
+  @apply h-full;
 }
 
 body {
   margin: 0;
+}
+
+app-root {
+  @apply bg-silver-cloud min-h-full;
 }
 
 mat-icon {
