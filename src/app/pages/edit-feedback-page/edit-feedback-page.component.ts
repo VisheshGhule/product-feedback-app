@@ -5,8 +5,5 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './edit-feedback-page.component.html',
-  styleUrl: './edit-feedback-page.component.css'
 })
-export class EditFeedbackPageComponent {
-
-}
+export class EditFeedbackPageComponent {}
