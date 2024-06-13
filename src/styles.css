@@ -25,7 +25,8 @@ body {
 }
 
 app-root,
-app-new-feedback-page {
+app-new-feedback-page,
+app-home-page {
   @apply block;
 }
 
