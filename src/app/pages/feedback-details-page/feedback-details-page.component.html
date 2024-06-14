@@ -1,1 +1,231 @@
-<p>feedback-details-page works!</p>
+<div class="min-h-full flex flex-col py-8 px-6 gap-7">
+  <div class="flex justify-between">
+    <button
+      type="button"
+      class="text-dusk-blue font-bold inline-flex gap-3.5 items-center"
+    >
+      <svg
+        width="6"
+        height="10"
+        viewBox="0 0 6 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4.33447 9L0.334473 5L4.33447  1"
+          stroke="#4661E6"
+          stroke-width="2"
+        />
+      </svg>
+      Go Back
+    </button>
+    <button
+      type="button"
+      class="font-semibold bg-royal-blue text-lightest-gray px-5 py-3 rounded-xl hover:bg-opacity-70 transition-all"
+    >
+      Edit Feedback
+    </button>
+  </div>
+  <div class="bg-white rounded-xl p-6 md:flex md:gap-10">
+    <div class="hidden md:block">
+      <button
+        type="button"
+        class="w-[40px] inline-flex flex-col items-center gap-2 bg-lightest-gray rounded-lg px-2.5 pb-2 pt-2.5 lg:hover:bg-royal-blue lg:hover:text-white transition-colors group/vote-btn"
+      >
+        <span>
+          <svg
+            width="9"
+            height="7"
+            viewBox="0 0 9 7"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="stroke-royal-blue lg:group-hover/vote-btn:stroke-white transition-colors"
+          >
+            <path d="M0 6L4 2L8 6" stroke-width="2" />
+          </svg>
+        </span>
+        <span>
+          {{ feedback.upvotes }}
+        </span>
+      </button>
+    </div>
+    <div class="md:w-11/12">
+      <h2
+        class="text-deep-indigo font-bold mb-2 md:mb-1 md:text-s5 lg:group-hover/request:text-royal-blue transition-colors"
+      >
+        {{ feedback.title }}
+      </h2>
+      <p class="text-medium-gray font-normal mb-3 md:mb-5 md:text-s4">
+        {{ feedback.description }}
+      </p>
+      <span
+        class="text-royal-blue bg-lightest-gray px-4 py-1.5 rounded-xl capitalize font-semibold"
+        >{{ feedback.category }}</span
+      >
+      <div class="flex items-center justify-between mt-5 md:hidden">
+        <button
+          type="button"
+          class="inline-flex items-center gap-3.5 font-bold bg-lightest-gray rounded-xl px-4 py-1.5 active:bg-royal-blue active:text-white transition-colors group/vote-btn"
+        >
+          <span>
+            <svg
+              width="9"
+              height="7"
+              viewBox="0 0 9 7"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="stroke-royal-blue group-active/vote-btn:stroke-white"
+            >
+              <path d="M0 6L4 2L8 6" stroke-width="2" />
+            </svg>
+          </span>
+          <span>
+            {{ feedback.upvotes }}
+          </span>
+        </button>
+        <span class="inline-flex items-center gap-1.5">
+          <span
+            ><svg
+              width="18"
+              height="16"
+              viewBox="0 0 18 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.62074 16H1.34534L2.24718 15.0895C2.73344 14.5986 3.0371 13.9601 3.11873 13.2674C1.03637 11.8878 0 9.88917 0 7.79388C0 3.92832 3.51913 0 9.0305 0C14.8692 0 18 3.61479 18 7.45522C18 11.321 14.8361 14.9333 9.0305 14.9333C8.0135 14.9333 6.95226 14.7963 6.00478 14.5448C5.10787 15.4735 3.89262 16 2.62074 16Z"
+                fill="#CDD2EE"
+              />
+            </svg>
+          </span>
+          <span>
+            {{ feedback.comments.length }}
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="hidden md:flex">
+      <span class="inline-flex items-center gap-1.5">
+        <span
+          ><svg
+            width="18"
+            height="16"
+            viewBox="0 0 18 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.62074 16H1.34534L2.24718 15.0895C2.73344 14.5986 3.0371 13.9601 3.11873 13.2674C1.03637 11.8878 0 9.88917 0 7.79388C0 3.92832 3.51913 0 9.0305 0C14.8692 0 18 3.61479 18 7.45522C18 11.321 14.8361 14.9333 9.0305 14.9333C8.0135 14.9333 6.95226 14.7963 6.00478 14.5448C5.10787 15.4735 3.89262 16 2.62074 16Z"
+              fill="#CDD2EE"
+            />
+          </svg>
+        </span>
+        <span>
+          {{ feedback.comments.length }}
+        </span>
+      </span>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl p-7">
+    <h2 class="text-s6 text-deep-indigo">
+      {{ feedback.comments.length }} Comments
+    </h2>
+    @for (comment of feedback.comments; track comment.id) {
+    <div
+      class="py-6 border-b border-b-lightest-gray"
+      [ngClass]="{
+        'border-b border-b-lightest-gray': !$last,
+        'pb-0': $last
+      }"
+    >
+      <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-medium-gray">
+          <img
+            [src]="comment.user.image"
+            [alt]="comment.user.name"
+            fill
+            class="rounded-full"
+          />
+        </div>
+        <div class="flex flex-col flex-grow">
+          <span class="text-s4 font-bold text-deep-indigo">{{
+            comment.user.name
+          }}</span>
+          <span class="text-medium-gray"
+            >&commat;{{ comment.user.username }}</span
+          >
+        </div>
+        <button type="button" class="text-royal-blue text-s3 font-semibold">
+          Reply
+        </button>
+      </div>
+      <div class="mt-4">
+        <p class="text-medium-gray">{{ comment.content }}</p>
+      </div>
+      @if(comment.replies.length > 0) {
+      <div class="mt-6">
+        @for (reply of comment.replies; track reply.user.username) {
+        <div
+          class="border-l border-l-lightest-gray pl-6"
+          [ngClass]="{ 'pb-6': $even }"
+        >
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full">
+              <img
+                [src]="reply.user.image"
+                [alt]="reply.user.name"
+                fill
+                class="rounded-full"
+              />
+            </div>
+            <div class="flex flex-col flex-grow">
+              <span class="text-s4 font-bold text-deep-indigo">{{
+                reply.user.name
+              }}</span>
+              <span class="text-medium-gray"
+                >&commat;{{ reply.user.username }}</span
+              >
+            </div>
+            <button type="button" class="text-royal-blue text-s4 font-bold">
+              Reply
+            </button>
+          </div>
+          <div class="mt-4">
+            <p class="text-medium-gray">
+              <span class="text-rich-purple font-bold"
+                >&commat;{{ reply.replyingTo }}</span
+              >
+              <span>
+                {{ comment.content }}
+              </span>
+            </p>
+          </div>
+        </div>
+        }
+      </div>
+      }
+    </div>
+    }
+  </div>
+  <div class="bg-white rounded-xl px-7 py-8 mb-[5.5rem]">
+    <h2 class="text-s6 text-deep-indigo">Add Comment</h2>
+    <form>
+      <textarea
+        id="comment"
+        placeholder="Type your comment here"
+        class="w-full p-4 rounded-md text-deep-indigo bg-silver-cloud h-[5rem] mt-6 resize-none border-none focus:outline-1 focus:outline focus:outline-royal-blue placeholder:text-s3 placeholder:text-medium-gray transition-all"
+      ></textarea>
+      <div class="flex flex-col justify-between items-center">
+        <p class="text-s3 text-medium-gray w-full text-right mt-1">
+          250 Characters left
+        </p>
+        <button
+          type="button"
+          class="text-s3 mt-7 font-semibold bg-rich-purple w-full text-lightest-gray px-5 py-3 rounded-xl hover:bg-opacity-70 transition-all"
+        >
+          Post Comment
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
