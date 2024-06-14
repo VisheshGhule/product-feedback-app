@@ -1,7 +1,55 @@
+<dialog
+  #asideModal
+  class="h-screen fixed top-[4.594rem] left-auto backdrop:bg-[#000] backdrop:top-[4.594rem] backdrop:bg-opacity-60 m-0 ease-in-out duration-300"
+  [ngClass]="isOpen ? 'translate-x-0 has-backdrop' : 'translate-x-full'"
+  (click)="toggleAsideModal()"
+  (keypress)="toggleAsideModal()"
+>
+  <aside
+    aria-label="feedback-navigation"
+    class="w-full h-full bg-lightest-gray flex flex-col items-center px-6 py-6 gap-5"
+  >
+    <div
+      class="p-6 bg-white rounded-lg w-[13.938rem] lg:w-full flex flex-wrap gap-2 lg:gap-3.5"
+    >
+      <app-tag-button>All</app-tag-button>
+      <app-tag-button>UI</app-tag-button>
+      <app-tag-button>UX</app-tag-button>
+      <app-tag-button>Enhancement</app-tag-button>
+      <app-tag-button>Bug</app-tag-button>
+      <app-tag-button>Feature</app-tag-button>
+    </div>
+    <div class="text-dusk-blue p-6 bg-white w-[13.938rem] rounded-lg">
+      <div class="flex justify-between">
+        <h3 class="text-s5">Roadmap</h3>
+        <a
+          href="#"
+          class="text-royal-blue underline hover:text-opacity-60 transition-all"
+          >View</a
+        >
+      </div>
+      <ul class="mt-5 flex flex-col gap-1 list-disc list-inside">
+        <li class="marker:text-peach flex justify-between">
+          <span>Planned</span>
+          <span class="text-s4 font-bold">2</span>
+        </li>
+        <li class="marker:text-rich-purple flex justify-between">
+          <span>In-Progress</span>
+          <span class="text-s4 font-bold">3</span>
+        </li>
+        <li class="marker:text-bright-teal flex justify-between">
+          <span>Live</span>
+          <span class="text-s4 font-bold">1</span>
+        </li>
+      </ul>
+    </div>
+  </aside>
+</dialog>
 <div
   class="h-screen w-full lg:w-11/12 xl:w-10/12 flex flex-col lg:flex-row lg:gap-5 md:px-10 md:py-16 md:pb-0 lg:mx-auto relative"
 >
   <aside
+    aria-label="feedback-navigation"
     class="hidden md:bg-lightest-gray z-20 md:flex lg:flex-col gap-2 lg:gap-6 mb-10 h-[11.125rem] lg:h-fit lg:w-[15.9375rem]"
   >
     <div
@@ -54,9 +102,46 @@
           <h1 class="text-s3 font-bold">Frontend Mentor</h1>
           <h2 class="text-s1 font-medium opacity-75">Feedback Board</h2>
         </div>
-        <div>
-          <mat-icon>menu</mat-icon>
-        </div>
+        <button
+          class="relative group"
+          type="button"
+          (click)="toggleAsideModal()"
+          (keypress)="toggleAsideModal()"
+        >
+          <div
+            class="relative flex overflow-hidden items-center justify-center transform transition-all duration-200"
+          >
+            <div
+              class="flex flex-col justify-between w-[20px] h-[18px] transform transition-all duration-300 origin-center overflow-hidden"
+            >
+              <div
+                class="bg-white h-[3px] w-5 transform transition-all duration-300 origin-left"
+                [ngClass]="{ 'translate-x-10': isOpen }"
+              ></div>
+              <div
+                class="bg-white h-[3px] w-5 rounded transform transition-all duration-300 delay-75"
+                [ngClass]="{ 'translate-x-10': isOpen }"
+              ></div>
+              <div
+                class="bg-white h-[3px] w-5 transform transition-all duration-300 origin-left delay-150"
+                [ngClass]="{ 'translate-x-10': isOpen }"
+              ></div>
+              <div
+                class="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 flex w-0"
+                [ngClass]="{ '-translate-x-10 w-12': !isOpen }"
+              >
+                <div
+                  class="absolute bg-white h-[3px] w-5 transform transition-all duration-500 delay-300"
+                  [ngClass]="!isOpen ? 'rotate-0' : 'rotate-45'"
+                ></div>
+                <div
+                  class="absolute bg-white h-[3px] w-5 transform transition-all duration-500 delay-300"
+                  [ngClass]="!isOpen ? '-rotate-0' : '-rotate-45'"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </button>
       </div>
       <div
         class="bg-deep-indigo px-6 py-2 md:p-3.5 md:px-3 md:rounded-custom-lg flex justify-between items-center"

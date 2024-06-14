@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 import { TagButtonComponent } from '../../components/buttons/tag-button/tag-button.component';
 import { ButtonComponent } from '../../components/buttons/button/button.component';
@@ -17,16 +17,20 @@ interface ProductFeedbackData {
   selector: 'app-home-page',
   standalone: true,
   imports: [
+    CommonModule,
     TagButtonComponent,
     ButtonComponent,
     SortMenuComponent,
-    MatIconModule,
   ],
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent {
+  @ViewChild('asideModal') asideModal!: ElementRef<HTMLDialogElement>;
+  @ViewChild('toggleMenuButton') menuButton!: ElementRef<HTMLButtonElement>;
+
   productRequests: ProductRequest[] = [];
   productFeedbackData!: ProductFeedbackData;
+  isOpen = false;
 
   constructor(private _router: Router) {
     this.productFeedbackData = data as ProductFeedbackData;
@@ -34,5 +38,15 @@ export class HomePageComponent {
 
   goTonewFeedBackPage(): void {
     this._router.navigateByUrl('/new-feedback');
+  }
+
+  toggleAsideModal(): void {
+    if (this.asideModal.nativeElement.open) {
+      this.asideModal.nativeElement.close();
+      this.isOpen = false;
+    } else {
+      this.asideModal.nativeElement.showModal();
+      this.isOpen = true;
+    }
   }
 }
