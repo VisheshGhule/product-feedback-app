@@ -34,6 +34,10 @@ app-root {
   @apply bg-silver-cloud min-h-full;
 }
 
+app-home-page {
+  @apply relative;
+}
+
 mat-icon {
   @apply font-semibold w-fit h-fit !important;
 }
