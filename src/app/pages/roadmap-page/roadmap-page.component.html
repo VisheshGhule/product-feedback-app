@@ -34,37 +34,58 @@
         id="planned"
         type="button"
         class="text-s2 text-center text-deep-indigo text-opacity-40 font-bold w-full p-5"
+        [ngClass]="{
+          'border-b-4 border-b-rich-purple pb-4':
+            (selectedFeedbackStatus | async) === 'planned'
+        }"
+        (click)="selectFeedbacksByStatus('planned')"
       >
-        Planned &lpar;2&rpar;
+        Planned &lpar;{{ getSelectedFeedbacksNumber("planned") }}&rpar;
       </button>
       <button
         id="in-progress"
         type="button"
-        class="text-s2 text-center text-deep-indigo font-bold w-full p-5 border-b-4 border-b-rich-purple"
+        class="text-s2 text-center text-deep-indigo font-bold w-full p-5"
+        [ngClass]="{
+          'border-b-4 border-b-rich-purple pb-4':
+            (selectedFeedbackStatus | async) === 'in-progress'
+        }"
+        (click)="selectFeedbacksByStatus('in-progress')"
       >
-        In-Progress &lpar;3&rpar;
+        In-Progress &lpar;{{ getSelectedFeedbacksNumber("in-progress") }}&rpar;
       </button>
       <button
         id="live"
         type="button"
         class="text-s2 text-center text-deep-indigo text-opacity-40 font-bold w-full p-5"
+        [ngClass]="{
+          'border-b-4 border-b-rich-purple pb-4':
+            (selectedFeedbackStatus | async) === 'live'
+        }"
+        (click)="selectFeedbacksByStatus('live')"
       >
-        Live &lpar;1&rpar;
+        Live &lpar;{{ getSelectedFeedbacksNumber("live") }}&rpar;
       </button>
     </div>
     <div class="px-7">
-      @if (feedbacks.length === 0) {
+      @if (productFeedbacks.length === 0) {
       <p class="text-medium-gray text-center mt-20">No feedback available</p>
       } @else {
       <div class="mt-7">
         <h2 class="text-deep-indigo text-s6">
-          In-Progress &lpar;<span>3</span>&rpar;
+          <span class="capitalize">{{ selectedFeedbackStatus | async }}</span>
+          &lpar;<span>{{
+            getSelectedFeedbacksNumber(selectedFeedbackStatus | async)
+          }}</span
+          >&rpar;
         </h2>
-        <p class="text-medium-gray mt-1">Features currently being developed</p>
+        <h3 class="text-medium-gray mt-1">
+          {{ getSelectedFeedbacksSubHeading(selectedFeedbackStatus | async) }}
+        </h3>
       </div>
       <ul class="mt-6 flex flex-col gap-5 pb-28">
-        @for (feedback of feedbacks; track feedback.id) { @if (feedback.status
-        === 'in-progress') {
+        @for (feedback of filterFeedbacksByStatus(selectedFeedbackStatus |
+        async); track feedback.id) {
         <li>
           <div
             class="border-t-8 border-t-rich-purple rounded-t-md rounded-b-xl bg-white p-6"
@@ -133,7 +154,7 @@
             </div>
           </div>
         </li>
-        } }
+        }
       </ul>
       }
     </div>
