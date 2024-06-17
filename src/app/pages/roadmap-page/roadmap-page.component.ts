@@ -51,13 +51,13 @@ export class RoadmapPageComponent {
   getSelectedFeedbacksSubHeading(status: ProductFeedbackStatus | null): string {
     switch (status) {
       case 'planned':
-        return 'Features currently in research';
+        return 'Ideas prioritized for research';
       case 'in-progress':
-        return 'Features currently being developed';
+        return 'Currently being developed';
       case 'live':
-        return 'Features currently released';
+        return 'Released features';
       default:
-        return 'Features currently suggested';
+        return 'Suggested features';
     }
   }
 }
