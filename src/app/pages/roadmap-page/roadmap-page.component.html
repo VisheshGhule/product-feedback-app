@@ -1,162 +1,158 @@
-<div>
-  <header class="bg-deep-indigo py-8 px-6 flex justify-between items-center">
-    <div class="text-white">
-      <button
-        id="goBack"
-        type="button"
-        class="font-bold text-white text-s2 inline-flex gap-3.5 items-center transition-all"
-      >
-        <svg
-          width="6"
-          height="10"
-          viewBox="0 0 6 10"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="stroke-white"
-        >
-          <path d="M4.33447 9L0.334473 5L4.33447  1" stroke-width="2" />
-        </svg>
-        Go Back
-      </button>
-      <h1 class="font-bold text-s6">Roadmap</h1>
-    </div>
+<header class="bg-deep-indigo py-7 px-6 flex justify-between items-center">
+  <div class="text-white">
     <button
-      id="edit-feedback"
+      id="goBack"
       type="button"
-      class="font-semibold bg-rich-purple text-lightest-gray px-5 md:px-6 py-3 rounded-xl hover:bg-opacity-70 transition-all"
+      class="font-bold text-white text-s2 inline-flex gap-3.5 items-center transition-all"
     >
-      + Add Feedback
+      <svg
+        width="6"
+        height="10"
+        viewBox="0 0 6 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="stroke-white"
+      >
+        <path d="M4.33447 9L0.334473 5L4.33447  1" stroke-width="2" />
+      </svg>
+      Go Back
     </button>
-  </header>
-  <main>
-    <div class="border-b border-b-darkest-gray flex justify-evenly">
-      <button
-        id="planned"
-        type="button"
-        class="text-s2 text-center text-deep-indigo text-opacity-40 font-bold w-full p-5"
-        [ngClass]="{
-          'border-b-4 border-b-rich-purple pb-4':
-            (selectedFeedbackStatus | async) === 'planned'
-        }"
-        (click)="selectFeedbacksByStatus('planned')"
-      >
-        Planned &lpar;{{ getSelectedFeedbacksNumber("planned") }}&rpar;
-      </button>
-      <button
-        id="in-progress"
-        type="button"
-        class="text-s2 text-center text-deep-indigo font-bold w-full p-5"
-        [ngClass]="{
-          'border-b-4 border-b-rich-purple pb-4':
-            (selectedFeedbackStatus | async) === 'in-progress'
-        }"
-        (click)="selectFeedbacksByStatus('in-progress')"
-      >
-        In-Progress &lpar;{{ getSelectedFeedbacksNumber("in-progress") }}&rpar;
-      </button>
-      <button
-        id="live"
-        type="button"
-        class="text-s2 text-center text-deep-indigo text-opacity-40 font-bold w-full p-5"
-        [ngClass]="{
-          'border-b-4 border-b-rich-purple pb-4':
-            (selectedFeedbackStatus | async) === 'live'
-        }"
-        (click)="selectFeedbacksByStatus('live')"
-      >
-        Live &lpar;{{ getSelectedFeedbacksNumber("live") }}&rpar;
-      </button>
-    </div>
-    <div class="px-7">
-      @if (productFeedbacks.length === 0) {
-      <p class="text-medium-gray text-center mt-20">No feedback available</p>
-      } @else {
-      <div class="mt-7">
-        <h2 class="text-deep-indigo text-s6">
-          <span class="capitalize">{{ selectedFeedbackStatus | async }}</span>
-          &lpar;<span>{{
-            getSelectedFeedbacksNumber(selectedFeedbackStatus | async)
-          }}</span
-          >&rpar;
-        </h2>
-        <h3 class="text-medium-gray mt-1">
-          {{ getSelectedFeedbacksSubHeading(selectedFeedbackStatus | async) }}
-        </h3>
-      </div>
-      <ul class="mt-6 flex flex-col gap-5 pb-28">
-        @for (feedback of filterFeedbacksByStatus(selectedFeedbackStatus |
-        async); track feedback.id) {
-        <li>
-          <div
-            class="border-t-8 border-t-rich-purple rounded-t-md rounded-b-xl bg-white p-6"
-          >
-            <p class="text-s2 font-normal text-medium-gray">
+    <h1 class="font-bold text-s6">Roadmap</h1>
+  </div>
+  <button
+    id="edit-feedback"
+    type="button"
+    class="font-semibold bg-rich-purple text-lightest-gray px-5 md:px-6 py-3 rounded-xl hover:bg-opacity-70 transition-all"
+  >
+    + Add Feedback
+  </button>
+</header>
+<main class="min-h-[calc(100vh_-_168.8px)]">
+  <div class="border-b border-b-darkest-gray flex justify-evenly">
+    <button
+      id="planned"
+      type="button"
+      class="text-s1 text-center text-deep-indigo text-opacity-40 font-bold w-full p-5"
+      [ngClass]="{
+        'border-b-4 border-b-rich-purple pb-4':
+          (selectedFeedbackStatus | async) === 'planned'
+      }"
+      (click)="selectFeedbacksByStatus('planned')"
+    >
+      Planned &lpar;{{ getSelectedFeedbacksNumber("planned") }}&rpar;
+    </button>
+    <button
+      id="in-progress"
+      type="button"
+      class="text-s1 text-center text-deep-indigo font-bold w-full p-5"
+      [ngClass]="{
+        'border-b-4 border-b-rich-purple pb-4':
+          (selectedFeedbackStatus | async) === 'in-progress'
+      }"
+      (click)="selectFeedbacksByStatus('in-progress')"
+    >
+      In-Progress &lpar;{{ getSelectedFeedbacksNumber("in-progress") }}&rpar;
+    </button>
+    <button
+      id="live"
+      type="button"
+      class="text-s1 text-center text-deep-indigo text-opacity-40 font-bold w-full p-5"
+      [ngClass]="{
+        'border-b-4 border-b-rich-purple pb-4':
+          (selectedFeedbackStatus | async) === 'live'
+      }"
+      (click)="selectFeedbacksByStatus('live')"
+    >
+      Live &lpar;{{ getSelectedFeedbacksNumber("live") }}&rpar;
+    </button>
+  </div>
+  <div class="px-7 pt-7 h-[calc(100vh_-_20vh)] overflow-y-scroll">
+    @if (productFeedbacks.length === 0) {
+    <p class="text-medium-gray text-center mt-20">No feedback available</p>
+    } @else {
+    <h2 class="text-deep-indigo text-s6">
+      <span class="capitalize">{{ selectedFeedbackStatus | async }}</span>
+      &lpar;<span>{{
+        getSelectedFeedbacksNumber(selectedFeedbackStatus | async)
+      }}</span
+      >&rpar;
+    </h2>
+    <h3 class="text-medium-gray mt-1">
+      {{ getSelectedFeedbacksSubHeading(selectedFeedbackStatus | async) }}
+    </h3>
+    <ul class="mt-6 flex flex-col gap-5 pb-28">
+      @for (feedback of filterFeedbacksByStatus(selectedFeedbackStatus | async);
+      track feedback.id) {
+      <li>
+        <div
+          class="border-t-8 border-t-rich-purple rounded-t-md rounded-b-xl bg-white p-6"
+        >
+          <p class="text-s2 font-normal text-medium-gray">
+            <svg
+              width="8"
+              height="8"
+              viewBox="0 0 8 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="inline mr-1.5"
+            >
+              <circle cx="4" cy="4" r="4" fill="#AD1FEA" />
+            </svg>
+            <span class="capitalize">{{ feedback.status }}</span>
+          </p>
+          <h3 class="text-deep-indigo font-bold mt-4">
+            {{ feedback.title }}
+          </h3>
+          <p class="text-s2 font-normal mt-2 text-medium-gray">
+            {{ feedback.description }}
+          </p>
+          <p class="mt-4">
+            <span
+              class="text-royal-blue bg-lightest-gray px-4 py-1.5 rounded-xl capitalize font-semibold"
+              >{{ feedback.category }}</span
+            >
+          </p>
+          <div class="flex items-center justify-between mt-5">
+            <button
+              type="button"
+              class="inline-flex items-center gap-3.5 font-bold bg-lightest-gray rounded-xl px-4 py-1.5 active:bg-royal-blue active:text-white transition-colors group/vote-btn"
+            >
               <svg
-                width="8"
-                height="8"
-                viewBox="0 0 8 8"
+                width="9"
+                height="7"
+                viewBox="0 0 9 7"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="inline mr-1.5"
+                class="stroke-royal-blue group-active/vote-btn:stroke-white"
               >
-                <circle cx="4" cy="4" r="4" fill="#AD1FEA" />
+                <path d="M0 6L4 2L8 6" stroke-width="2" />
               </svg>
-              <span class="capitalize">{{ feedback.status }}</span>
-            </p>
-            <h3 class="text-deep-indigo font-bold mt-4">
-              {{ feedback.title }}
-            </h3>
-            <p class="text-s2 font-normal mt-2 text-medium-gray">
-              {{ feedback.description }}
-            </p>
-            <p class="mt-4">
+              <span class="text-deep-indigo"> {{ feedback.upvotes }} </span>
+            </button>
+            <span class="inline-flex items-center gap-2">
               <span
-                class="text-royal-blue bg-lightest-gray px-4 py-1.5 rounded-xl capitalize font-semibold"
-                >{{ feedback.category }}</span
-              >
-            </p>
-            <div class="flex items-center justify-between mt-5">
-              <button
-                type="button"
-                class="inline-flex items-center gap-3.5 font-bold bg-lightest-gray rounded-xl px-4 py-1.5 active:bg-royal-blue active:text-white transition-colors group/vote-btn"
-              >
-                <svg
-                  width="9"
-                  height="7"
-                  viewBox="0 0 9 7"
+                ><svg
+                  width="18"
+                  height="16"
+                  viewBox="0 0 18 16"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  class="stroke-royal-blue group-active/vote-btn:stroke-white"
                 >
-                  <path d="M0 6L4 2L8 6" stroke-width="2" />
+                  <path
+                    d="M2.62074 16H1.34534L2.24718 15.0895C2.73344 14.5986 3.0371 13.9601 3.11873 13.2674C1.03637 11.8878 0 9.88917 0 7.79388C0 3.92832 3.51913 0 9.0305 0C14.8692 0 18 3.61479 18 7.45522C18 11.321 14.8361 14.9333 9.0305 14.9333C8.0135 14.9333 6.95226 14.7963 6.00478 14.5448C5.10787 15.4735 3.89262 16 2.62074 16Z"
+                    fill="#CDD2EE"
+                  />
                 </svg>
-                <span class="text-deep-indigo"> {{ feedback.upvotes }} </span>
-              </button>
-              <span class="inline-flex items-center gap-2">
-                <span
-                  ><svg
-                    width="18"
-                    height="16"
-                    viewBox="0 0 18 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M2.62074 16H1.34534L2.24718 15.0895C2.73344 14.5986 3.0371 13.9601 3.11873 13.2674C1.03637 11.8878 0 9.88917 0 7.79388C0 3.92832 3.51913 0 9.0305 0C14.8692 0 18 3.61479 18 7.45522C18 11.321 14.8361 14.9333 9.0305 14.9333C8.0135 14.9333 6.95226 14.7963 6.00478 14.5448C5.10787 15.4735 3.89262 16 2.62074 16Z"
-                      fill="#CDD2EE"
-                    />
-                  </svg>
-                </span>
-                <span class="text-deep-indigo font-bold">
-                  {{ feedback.comments.length }}</span
-                >
               </span>
-            </div>
+              <span class="text-deep-indigo font-bold">
+                {{ feedback.comments.length }}</span
+              >
+            </span>
           </div>
-        </li>
-        }
-      </ul>
+        </div>
+      </li>
       }
-    </div>
-  </main>
-</div>
+    </ul>
+    }
+  </div>
+</main>
