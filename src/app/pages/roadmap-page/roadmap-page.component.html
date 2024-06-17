@@ -33,24 +33,109 @@
       <button
         id="planned"
         type="button"
-        class="text-s3 text-center text-deep-indigo text-opacity-40 font-bold w-full px-5 py-6"
+        class="text-s2 text-center text-deep-indigo text-opacity-40 font-bold w-full p-5"
       >
         Planned &lpar;2&rpar;
       </button>
       <button
         id="in-progress"
         type="button"
-        class="text-s3 text-center text-deep-indigo font-bold w-full px-5 py-6 border-b-4 border-b-rich-purple"
+        class="text-s2 text-center text-deep-indigo font-bold w-full p-5 border-b-4 border-b-rich-purple"
       >
         In-Progress &lpar;3&rpar;
       </button>
       <button
         id="live"
         type="button"
-        class="text-s3 text-center text-deep-indigo text-opacity-40 font-bold w-full px-5 py-6"
+        class="text-s2 text-center text-deep-indigo text-opacity-40 font-bold w-full p-5"
       >
         Live &lpar;1&rpar;
       </button>
+    </div>
+    <div class="px-7">
+      @if (feedbacks.length === 0) {
+      <p class="text-medium-gray text-center mt-20">No feedback available</p>
+      } @else {
+      <div class="mt-7">
+        <h2 class="text-deep-indigo text-s6">
+          In-Progress &lpar;<span>3</span>&rpar;
+        </h2>
+        <p class="text-medium-gray mt-1">Features currently being developed</p>
+      </div>
+      <ul class="mt-6 flex flex-col gap-5 pb-28">
+        @for (feedback of feedbacks; track feedback.id) { @if (feedback.status
+        === 'in-progress') {
+        <li>
+          <div
+            class="border-t-8 border-t-rich-purple rounded-t-md rounded-b-xl bg-white p-6"
+          >
+            <p class="text-s2 font-normal text-medium-gray">
+              <svg
+                width="8"
+                height="8"
+                viewBox="0 0 8 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="inline mr-1.5"
+              >
+                <circle cx="4" cy="4" r="4" fill="#AD1FEA" />
+              </svg>
+              <span class="capitalize">{{ feedback.status }}</span>
+            </p>
+            <h3 class="text-deep-indigo font-bold mt-4">
+              {{ feedback.title }}
+            </h3>
+            <p class="text-s2 font-normal mt-2 text-medium-gray">
+              {{ feedback.description }}
+            </p>
+            <p class="mt-4">
+              <span
+                class="text-royal-blue bg-lightest-gray px-4 py-1.5 rounded-xl capitalize font-semibold"
+                >{{ feedback.category }}</span
+              >
+            </p>
+            <div class="flex items-center justify-between mt-5">
+              <button
+                type="button"
+                class="inline-flex items-center gap-3.5 font-bold bg-lightest-gray rounded-xl px-4 py-1.5 active:bg-royal-blue active:text-white transition-colors group/vote-btn"
+              >
+                <svg
+                  width="9"
+                  height="7"
+                  viewBox="0 0 9 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="stroke-royal-blue group-active/vote-btn:stroke-white"
+                >
+                  <path d="M0 6L4 2L8 6" stroke-width="2" />
+                </svg>
+                <span class="text-deep-indigo"> {{ feedback.upvotes }} </span>
+              </button>
+              <span class="inline-flex items-center gap-2">
+                <span
+                  ><svg
+                    width="18"
+                    height="16"
+                    viewBox="0 0 18 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2.62074 16H1.34534L2.24718 15.0895C2.73344 14.5986 3.0371 13.9601 3.11873 13.2674C1.03637 11.8878 0 9.88917 0 7.79388C0 3.92832 3.51913 0 9.0305 0C14.8692 0 18 3.61479 18 7.45522C18 11.321 14.8361 14.9333 9.0305 14.9333C8.0135 14.9333 6.95226 14.7963 6.00478 14.5448C5.10787 15.4735 3.89262 16 2.62074 16Z"
+                      fill="#CDD2EE"
+                    />
+                  </svg>
+                </span>
+                <span class="text-deep-indigo font-bold">
+                  {{ feedback.comments.length }}</span
+                >
+              </span>
+            </div>
+          </div>
+        </li>
+        } }
+      </ul>
+      }
     </div>
   </main>
 </div>
