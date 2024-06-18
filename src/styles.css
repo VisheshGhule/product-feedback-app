@@ -24,15 +24,16 @@ body {
   margin: 0;
 }
 
+app-root,
 app-home-page,
 app-new-feedback-page,
 app-feedback-details-page,
 app-roadmap-page {
-  @apply block min-h-screen;
+  @apply block min-h-full;
 }
 
 app-root {
-  @apply block bg-silver-cloud min-h-screen;
+  @apply bg-silver-cloud;
 }
 
 app-home-page {
