@@ -46,7 +46,7 @@
   </aside>
 </dialog>
 <div
-  class="h-screen w-full lg:w-11/12 xl:w-10/12 flex flex-col lg:flex-row lg:gap-5 md:px-10 md:py-16 md:pb-0 lg:mx-auto relative"
+  class="w-full min-h-screen lg:w-11/12 xl:w-10/12 flex flex-col lg:flex-row lg:gap-5 md:px-10 md:py-16 md:pb-0 lg:mx-auto relative"
 >
   <aside
     aria-label="feedback-navigation"
@@ -94,7 +94,7 @@
     </div>
   </aside>
   <div class="lg:w-10/12 relative flex-grow">
-    <header class="absolute w-full top-0">
+    <header>
       <div
         class="text-white flex justify-between items-center py-4 px-6 bg-mobile-header bg-cover md:hidden"
       >
@@ -172,19 +172,84 @@
       </div>
     </header>
     <main
-      class="text-s1 absolute w-full top-[129px] md:top-[97px] bottom-0 overflow-y-scroll"
+      class="text-s1 h-[calc(100vh_-_128px)] md:h-[calc(100vh_-_375px)] lg:h-[calc(100vh_-_156px)] px-5 pt-8 pb-12 md:pb-14 lg:pb-30 md:px-0 md:pt-0 md:mt-5 overflow-y-auto"
     >
-      <div class="w-full h-full px-5 pt-8 pb-12 md:p-0">
-        <ul class="pb-8 md:pb-20 suggestion-list">
-          @for (request of productFeedbackData.productRequests; track
-          request.id) {
-          <li
-            class="bg-white rounded-lg p-6 md:p-8 mb-3 md:flex md:gap-10 lg:hover:cursor-pointer group/request"
-          >
-            <div class="hidden md:block">
+      @if (productFeedbackData.productRequests.length === 0) {
+      <div
+        class="h-full bg-white p-6 rounded-custom-lg flex flex-col items-center justify-center"
+      >
+        <div
+          class="w-[6.375rem] h-[6.75rem] md:w-[8.1025rem] md:h-[8.54638rem]"
+        >
+          <img
+            src="./assets/images/shared/illustration-empty.svg"
+            alt="empty illustration"
+            fill
+          />
+        </div>
+        <div class="text-center mt-10 md:mt-5 max-w-[25.625rem]">
+          <h3 class="text-s5 md:text-s7 text-deep-indigo mb-4">
+            There is no feedback yet.
+          </h3>
+          <p class="text-s4 text-dusk-blue font-normal">
+            Got a suggestion? Found a bug that needs to be squashed? We love
+            hearing about new ideas to improve our app.
+          </p>
+        </div>
+        <app-button
+          customClass="bg-rich-purple"
+          class="mt-6 md:mt-12"
+          (click)="goTonewFeedBackPage()"
+          (keyPress)="goTonewFeedBackPage()"
+          >+ Add Feedback</app-button
+        >
+      </div>
+      } @else {
+      <ul>
+        @for (request of productFeedbackData.productRequests; track request.id)
+        {
+        <li
+          class="bg-white rounded-lg p-6 md:p-8 mb-3 md:flex md:gap-10 lg:hover:cursor-pointer group/request"
+        >
+          <div class="hidden md:block">
+            <button
+              type="button"
+              class="w-[40px] inline-flex flex-col items-center gap-2 bg-lightest-gray rounded-lg px-2.5 pb-2 pt-2.5 lg:hover:bg-royal-blue lg:hover:text-white transition-colors group/vote-btn"
+            >
+              <span>
+                <svg
+                  width="9"
+                  height="7"
+                  viewBox="0 0 9 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="stroke-royal-blue lg:group-hover/vote-btn:stroke-white transition-colors"
+                >
+                  <path d="M0 6L4 2L8 6" stroke-width="2" />
+                </svg>
+              </span>
+              <span>
+                {{ request.upvotes }}
+              </span>
+            </button>
+          </div>
+          <div class="md:w-11/12">
+            <h2
+              class="font-bold mb-2 md:mb-1 md:text-s5 lg:group-hover/request:text-royal-blue transition-colors"
+            >
+              {{ request.title }}
+            </h2>
+            <p class="text-medium-gray font-normal mb-3 md:mb-5 md:text-s4">
+              {{ request.description }}
+            </p>
+            <span
+              class="text-royal-blue bg-lightest-gray px-3 py-1 rounded-lg capitalize"
+              >{{ request.category }}</span
+            >
+            <div class="flex items-center justify-between mt-4 md:hidden">
               <button
                 type="button"
-                class="w-[40px] inline-flex flex-col items-center gap-2 bg-lightest-gray rounded-lg px-2.5 pb-2 pt-2.5 lg:hover:bg-royal-blue lg:hover:text-white transition-colors group/vote-btn"
+                class="inline-flex items-center gap-2 bg-lightest-gray rounded-lg px-3 py-1 active:bg-royal-blue active:text-white transition-colors group/vote-btn"
               >
                 <span>
                   <svg
@@ -193,7 +258,7 @@
                     viewBox="0 0 9 7"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="stroke-royal-blue lg:group-hover/vote-btn:stroke-white transition-colors"
+                    class="stroke-royal-blue group-active/vote-btn:stroke-white"
                   >
                     <path d="M0 6L4 2L8 6" stroke-width="2" />
                   </svg>
@@ -202,63 +267,6 @@
                   {{ request.upvotes }}
                 </span>
               </button>
-            </div>
-            <div class="md:w-11/12">
-              <h2
-                class="font-bold mb-2 md:mb-1 md:text-s5 lg:group-hover/request:text-royal-blue transition-colors"
-              >
-                {{ request.title }}
-              </h2>
-              <p class="text-medium-gray font-normal mb-3 md:mb-5 md:text-s4">
-                {{ request.description }}
-              </p>
-              <span
-                class="text-royal-blue bg-lightest-gray px-3 py-1 rounded-lg capitalize"
-                >{{ request.category }}</span
-              >
-              <div class="flex items-center justify-between mt-4 md:hidden">
-                <button
-                  type="button"
-                  class="inline-flex items-center gap-2 bg-lightest-gray rounded-lg px-3 py-1 active:bg-royal-blue active:text-white transition-colors group/vote-btn"
-                >
-                  <span>
-                    <svg
-                      width="9"
-                      height="7"
-                      viewBox="0 0 9 7"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="stroke-royal-blue group-active/vote-btn:stroke-white"
-                    >
-                      <path d="M0 6L4 2L8 6" stroke-width="2" />
-                    </svg>
-                  </span>
-                  <span>
-                    {{ request.upvotes }}
-                  </span>
-                </button>
-                <span class="inline-flex items-center gap-1.5">
-                  <span
-                    ><svg
-                      width="18"
-                      height="16"
-                      viewBox="0 0 18 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M2.62074 16H1.34534L2.24718 15.0895C2.73344 14.5986 3.0371 13.9601 3.11873 13.2674C1.03637 11.8878 0 9.88917 0 7.79388C0 3.92832 3.51913 0 9.0305 0C14.8692 0 18 3.61479 18 7.45522C18 11.321 14.8361 14.9333 9.0305 14.9333C8.0135 14.9333 6.95226 14.7963 6.00478 14.5448C5.10787 15.4735 3.89262 16 2.62074 16Z"
-                        fill="#CDD2EE"
-                      />
-                    </svg>
-                  </span>
-                  <span>
-                    {{ request.comments.length }}
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div class="hidden md:flex">
               <span class="inline-flex items-center gap-1.5">
                 <span
                   ><svg
@@ -279,41 +287,32 @@
                 </span>
               </span>
             </div>
-          </li>
-          } @empty {
-
-          <div
-            class="bg-white p-6 rounded-custom-lg h-full lg:h-[85%] xl:h-[90%] flex flex-col items-center justify-center"
-          >
-            <div
-              class="w-[6.375rem] h-[6.75rem] md:w-[8.1025rem] md:h-[8.54638rem]"
-            >
-              <img
-                src="./assets/images/shared/illustration-empty.svg"
-                alt="empty illustration"
-                fill
-              />
-            </div>
-            <div class="text-center mt-10 md:mt-5 max-w-[25.625rem]">
-              <h3 class="text-s5 md:text-s7 text-deep-indigo mb-4">
-                There is no feedback yet.
-              </h3>
-              <p class="text-s4 text-dusk-blue font-normal">
-                Got a suggestion? Found a bug that needs to be squashed? We love
-                hearing about new ideas to improve our app.
-              </p>
-            </div>
-            <app-button
-              customClass="bg-rich-purple"
-              class="mt-6 md:mt-12"
-              (click)="goTonewFeedBackPage()"
-              (keyPress)="goTonewFeedBackPage()"
-              >+ Add Feedback</app-button
-            >
           </div>
-          }
-        </ul>
-      </div>
+          <div class="hidden md:flex">
+            <span class="inline-flex items-center gap-1.5">
+              <span
+                ><svg
+                  width="18"
+                  height="16"
+                  viewBox="0 0 18 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2.62074 16H1.34534L2.24718 15.0895C2.73344 14.5986 3.0371 13.9601 3.11873 13.2674C1.03637 11.8878 0 9.88917 0 7.79388C0 3.92832 3.51913 0 9.0305 0C14.8692 0 18 3.61479 18 7.45522C18 11.321 14.8361 14.9333 9.0305 14.9333C8.0135 14.9333 6.95226 14.7963 6.00478 14.5448C5.10787 15.4735 3.89262 16 2.62074 16Z"
+                    fill="#CDD2EE"
+                  />
+                </svg>
+              </span>
+              <span>
+                {{ request.comments.length }}
+              </span>
+            </span>
+          </div>
+        </li>
+        }
+      </ul>
+      }
     </main>
   </div>
 </div>
