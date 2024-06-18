@@ -25,6 +25,11 @@ export class RoadmapPageComponent {
   selectedFeedbackStatus = new BehaviorSubject<ProductFeedbackStatus>(
     'planned'
   );
+  feedbackStatusGroups: ProductFeedbackStatus[] = [
+    'planned',
+    'in-progress',
+    'live',
+  ];
 
   constructor() {
     const productFeedbackData = data as ProductFeedbackData;
@@ -60,4 +65,5 @@ export class RoadmapPageComponent {
         return 'Suggested features';
     }
   }
+
 }
