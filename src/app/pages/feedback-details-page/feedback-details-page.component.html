@@ -2,8 +2,11 @@
   class="min-h-full lg:w-8/12 lg:mx-auto flex flex-col py-8 px-6 md:px-9 md:pt-16 gap-7"
 >
   <div class="flex justify-between">
-    <a
-      class="text-dusk-blue font-bold inline-flex gap-3.5 items-center transition-all"
+    <button
+      id="goBack"
+      type="button"
+      class="text-dusk-blue font-bold inline-flex gap-3.5 items-center lg:hover:underline transition-all"
+      (click)="goBack()"
     >
       <svg
         width="6"
@@ -19,8 +22,9 @@
         />
       </svg>
       Go Back
-    </a>
+    </button>
     <button
+      id="editFeedback"
       type="button"
       class="font-semibold bg-royal-blue text-lightest-gray px-5 md:px-6 py-3 rounded-xl hover:bg-opacity-70 transition-all"
     >
