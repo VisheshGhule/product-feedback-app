@@ -8,7 +8,7 @@
 }
 
 *::-webkit-scrollbar-track {
-  @apply bg-none rounded-md;
+  @apply bg-lightest-gray rounded-md;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -24,14 +24,15 @@ body {
   margin: 0;
 }
 
-app-root,
+app-home-page,
 app-new-feedback-page,
-app-home-page {
-  @apply block;
+app-feedback-details-page,
+app-roadmap-page {
+  @apply block min-h-screen;
 }
 
 app-root {
-  @apply bg-silver-cloud min-h-full;
+  @apply block bg-silver-cloud min-h-screen;
 }
 
 app-home-page {
