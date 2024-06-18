@@ -80,15 +80,21 @@
       <ul class="mt-5 flex flex-col gap-1 list-disc list-inside">
         <li class="marker:text-peach flex justify-between">
           <span>Planned</span>
-          <span class="text-s4 font-bold">2</span>
+          <span class="text-s4 font-bold">{{
+            getFeedbacksNumberByStatus("planned")
+          }}</span>
         </li>
         <li class="marker:text-rich-purple flex justify-between">
           <span>In-Progress</span>
-          <span class="text-s4 font-bold">3</span>
+          <span class="text-s4 font-bold">{{
+            getFeedbacksNumberByStatus("in-progress")
+          }}</span>
         </li>
         <li class="marker:text-bright-teal flex justify-between">
           <span>Live</span>
-          <span class="text-s4 font-bold">1</span>
+          <span class="text-s4 font-bold">{{
+            getFeedbacksNumberByStatus("live")
+          }}</span>
         </li>
       </ul>
     </div>

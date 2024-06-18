@@ -13,6 +13,8 @@ interface ProductFeedbackData {
   productRequests: ProductRequest[];
 }
 
+type ProductFeedbackStatus = 'suggestion' | 'planned' | 'in-progress' | 'live';
+
 @Component({
   selector: 'app-home-page',
   standalone: true,
@@ -47,5 +49,11 @@ export class HomePageComponent {
       this.asideModal.nativeElement.showModal();
       this.isOpen = true;
     }
+  }
+
+  getFeedbacksNumberByStatus(status: ProductFeedbackStatus): number {
+    return this.productFeedbackData.productRequests.filter(
+      (feedback) => feedback.status === status
+    ).length;
   }
 }
