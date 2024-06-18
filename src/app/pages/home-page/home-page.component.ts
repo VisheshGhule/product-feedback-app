@@ -26,7 +26,6 @@ interface ProductFeedbackData {
 })
 export class HomePageComponent {
   @ViewChild('asideModal') asideModal!: ElementRef<HTMLDialogElement>;
-  @ViewChild('toggleMenuButton') menuButton!: ElementRef<HTMLButtonElement>;
 
   productRequests: ProductRequest[] = [];
   productFeedbackData!: ProductFeedbackData;
