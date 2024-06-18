@@ -1,4 +1,4 @@
-<div class="md:px-8 md:pt-14">
+<div class="md:px-8 md:pt-14 lg:pt-16 lg:max-w-[69.375rem] lg:mx-auto">
   <header
     class="bg-deep-indigo py-7 px-6 flex justify-between items-center md:rounded-xl"
   >
@@ -6,7 +6,7 @@
       <button
         id="goBack"
         type="button"
-        class="font-bold text-white text-s2 inline-flex gap-3.5 items-center transition-all"
+        class="font-bold text-white text-s2 inline-flex gap-3.5 items-center transition-all lg:hover:underline"
       >
         <svg
           width="6"
@@ -30,7 +30,9 @@
       + Add Feedback
     </button>
   </header>
-  <main class="min-h-[calc(100vh_-_168.8px)]">
+  <main
+    class="h-[calc(100vh_-_110px)] md:h-[calc(100vh_-_175px)] lg:md:h-[calc(100vh_-_180px)] overflow-y-scroll"
+  >
     <div class="border-b border-b-darkest-gray flex justify-evenly md:hidden">
       <button
         id="planned"
@@ -70,7 +72,7 @@
       </button>
     </div>
     <!-- Mobile UI -->
-    <div class="px-7 pt-7 h-[calc(100vh_-_20vh)] overflow-y-scroll md:hidden">
+    <div class="px-7 pt-7 overflow-y-scroll md:hidden">
       @if (productFeedbacks.length === 0) {
       <p class="text-medium-gray text-center mt-20">No feedback available</p>
       } @else {
@@ -163,7 +165,7 @@
     </div>
     <!-- Tablet and Desktop UI -->
     <div
-      class="pt-8 h-[calc(100vh_-_15vh)] grid-cols-3 gap-2 overflow-y-scroll hidden md:grid"
+      class="pt-8 lg:pt-12 min-h-full grid-cols-3 gap-2 lg:gap-7 md:grid hidden"
     >
       @for (feedbackStatus of feedbackStatusGroups; track feedbackStatus) {
       <div>
@@ -205,22 +207,28 @@
                 </svg>
                 <span class="capitalize">{{ feedback.status }}</span>
               </p>
-              <h4 class="text-s1 text-deep-indigo font-bold mt-4">
-                {{ feedback.title }}
+              <h4 class="text-s1 lg:text-s4 text-deep-indigo font-bold mt-4">
+                <a
+                  href=""
+                  class="lg:hover:text-royal-blue active:text-royal-blue transition-colors"
+                  >{{ feedback.title }}</a
+                >
               </h4>
-              <p class="text-s1 font-normal mt-2 text-medium-gray line-clamp-2">
+              <p
+                class="text-s1 lg:text-s4 font-normal mt-2 text-medium-gray line-clamp-2"
+              >
                 {{ feedback.description }}
               </p>
-              <p class="mt-7">
+              <p class="mt-7 lg:mt-5">
                 <span
-                  class="text-royal-blue bg-lightest-gray px-4 py-1.5 rounded-xl capitalize font-semibold"
+                  class="lg:text-s1 text-royal-blue bg-lightest-gray px-4 py-1.5 rounded-lg capitalize font-semibold"
                   >{{ feedback.category }}</span
                 >
               </p>
               <div class="flex items-center justify-between mt-5">
                 <button
                   type="button"
-                  class="inline-flex items-center gap-3.5 font-bold bg-lightest-gray rounded-xl px-4 py-1.5 active:bg-royal-blue active:text-white transition-colors group/vote-btn"
+                  class="lg:text-s1 inline-flex items-center gap-3.5 lg:gap-2 font-bold bg-lightest-gray rounded-lg px-4 py-1.5 lg:px-3 lg:py-2 active:bg-royal-blue active:text-white transition-colors group/vote-btn"
                 >
                   <svg
                     width="9"
