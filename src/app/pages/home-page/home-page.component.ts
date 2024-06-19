@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { TagButtonComponent } from '../../components/buttons/tag-button/tag-button.component';
@@ -20,6 +20,7 @@ type ProductFeedbackStatus = 'suggestion' | 'planned' | 'in-progress' | 'live';
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     TagButtonComponent,
     ButtonComponent,
     SortMenuComponent,
@@ -28,10 +29,17 @@ type ProductFeedbackStatus = 'suggestion' | 'planned' | 'in-progress' | 'live';
 })
 export class HomePageComponent {
   @ViewChild('asideModal') asideModal!: ElementRef<HTMLDialogElement>;
-
   productRequests: ProductRequest[] = [];
   productFeedbackData!: ProductFeedbackData;
   isOpen = false;
+  isSortMenuOpen = false;
+  sortMenuOptions: Array<{ name: string; href: string }> = [
+    { name: 'Most Upvotes', href: 'most-upvotes' },
+    { name: 'Least Upvotes', href: 'least-upvotes' },
+    { name: 'Most Comments', href: 'most-comments' },
+    { name: 'Least Comments', href: 'most-comments' },
+  ];
+  selectedSortType = this.sortMenuOptions[0];
 
   constructor(private _router: Router) {
     this.productFeedbackData = data as ProductFeedbackData;
@@ -55,5 +63,13 @@ export class HomePageComponent {
     return this.productFeedbackData.productRequests.filter(
       (feedback) => feedback.status === status
     ).length;
+  }
+
+  selectSortType(index: number): void {
+    this.selectedSortType = this.sortMenuOptions[index];
+  }
+
+  toggleSortMenuDropdown(value: boolean): void {
+    this.isSortMenuOpen = !value;
   }
 }

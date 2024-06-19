@@ -1,3 +1,4 @@
+<!-- Aside Menu Dialog -->
 <dialog
   #asideModal
   class="h-screen fixed top-[4.594rem] left-auto backdrop:bg-[#000] backdrop:top-[4.594rem] backdrop:bg-opacity-60 m-0 ease-in-out duration-300"
@@ -45,12 +46,19 @@
     </div>
   </aside>
 </dialog>
+<!-- Sort Menu Dialog -->
+<dialog
+  [open]="isSortMenuOpen"
+  class="bg-transparent w-full h-full absolute z-10"
+  (click)="toggleSortMenuDropdown(isSortMenuOpen)"
+  (keydown)="toggleSortMenuDropdown(isSortMenuOpen)"
+></dialog>
 <div
   class="w-full min-h-screen lg:w-11/12 xl:w-10/12 flex flex-col lg:flex-row lg:gap-5 md:px-10 md:py-16 md:pb-0 lg:mx-auto relative"
 >
   <aside
     aria-label="feedback-navigation"
-    class="hidden md:bg-lightest-gray z-20 md:flex lg:flex-col gap-2 lg:gap-6 mb-10 h-[11.125rem] lg:h-fit lg:w-[15.9375rem]"
+    class="hidden md:flex lg:flex-col gap-2 lg:gap-6 mb-10 h-[11.125rem] lg:h-fit lg:w-[15.9375rem]"
   >
     <div
       class="p-6 text-white rounded-lg w-4/12 lg:h-[8.5625rem] lg:w-full bg-tablet-header bg-cover flex flex-col justify-end"
@@ -165,9 +173,65 @@
               Suggestions</span
             >
           </div>
-          <app-sort-menu
-            [menuOptions]="[{ name: 'Most Upvotes', href: 'most-upvotes' }]"
-          ></app-sort-menu>
+          <div class="relative">
+            <button
+              type="button"
+              class="text-s2 text-darkest-gray bg-deep-indigo rounded-custom-lg inline-flex place-items-center gap-1 hover:opacity-60 transition-opacity"
+              (click)="toggleSortMenuDropdown(isSortMenuOpen)"
+            >
+              <span class="font-normal">Sort by :</span>
+              <span class="font-bold"> {{ selectedSortType.name }}</span>
+              <svg
+                width="9"
+                height="7"
+                viewBox="0 0 9 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="stroke-darkest-gray transition-transform"
+                [ngClass]="{ 'rotate-180': isSortMenuOpen }"
+              >
+                <path d="M1 6L5 2L9 6" stroke-width="2" />
+              </svg>
+            </button>
+            @if (isSortMenuOpen) {
+            <div
+              class="absolute top-12 md:top-16 w-[15.9375rem] z-10 bg-white custom-shadow rounded-xl transition-all"
+            >
+              <ul class="text-dusk-blue text-s4 rounded-xl">
+                @for (option of sortMenuOptions; track option.name) {
+
+                <li class="border-b border-opacity-15 border-deep-indigo">
+                  <a
+                    [routerLink]="['/?sort=', option.href]"
+                    class="px-6 py-3 lg:hover:text-rich-purple w-full flex items-center justify-between"
+                    (click)="
+                      selectSortType($index);
+                      toggleSortMenuDropdown(isSortMenuOpen)
+                    "
+                  >
+                    <span>{{ option.name }}</span>
+                    @if(option.name === selectedSortType.name) {
+                    <svg
+                      width="13"
+                      height="10"
+                      viewBox="0 0 13 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.968262 4.85894L4.49995 8.39062L11.9999 0.890625"
+                        stroke="#AD1FEA"
+                        stroke-width="2"
+                      />
+                    </svg>
+                    }
+                  </a>
+                </li>
+                }
+              </ul>
+            </div>
+            }
+          </div>
         </div>
         <app-button
           customClass="bg-rich-purple"
