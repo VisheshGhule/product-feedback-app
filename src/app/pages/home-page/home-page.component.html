@@ -55,7 +55,7 @@
     <div
       class="p-6 text-white rounded-lg w-4/12 lg:h-[8.5625rem] lg:w-full bg-tablet-header bg-cover flex flex-col justify-end"
     >
-      <h1 class="text-s6">Frontend Mentor</h1>
+      <h1 class="text-s6 font-bold">Frontend Mentor</h1>
       <h2 class="text-s3 opacity-75">Feedback Board</h2>
     </div>
     <div
@@ -70,7 +70,7 @@
     </div>
     <div class="text-dusk-blue p-6 bg-white w-4/12 lg:w-full rounded-lg">
       <div class="flex justify-between">
-        <h3 class="text-s5">Roadmap</h3>
+        <h3 class="text-s5 font-bold">Roadmap</h3>
         <a
           href="#"
           class="text-royal-blue underline hover:text-opacity-60 transition-all"
@@ -158,7 +158,7 @@
               src="/assets/images/shared/icon-suggestions.svg"
               alt="bulb icon"
             />
-            <span class="text-s5 text-white"
+            <span class="text-s5 font-bold text-white"
               >{{
                 productFeedbackData.productRequests.length
               }}
@@ -194,7 +194,7 @@
           />
         </div>
         <div class="text-center mt-10 md:mt-5 max-w-[25.625rem]">
-          <h3 class="text-s5 md:text-s7 text-deep-indigo mb-4">
+          <h3 class="text-s5 font-bold md:text-s7 text-deep-indigo mb-4">
             There is no feedback yet.
           </h3>
           <p class="text-s4 text-dusk-blue font-normal">
@@ -220,7 +220,7 @@
           <div class="hidden md:block">
             <button
               type="button"
-              class="w-[40px] inline-flex flex-col items-center gap-2 bg-lightest-gray rounded-lg px-2.5 pb-2 pt-2.5 lg:hover:bg-royal-blue lg:hover:text-white transition-colors group/vote-btn"
+              class="w-[40px] text-deep-indigo font-bold inline-flex flex-col items-center gap-2 bg-lightest-gray rounded-lg px-2.5 pb-2 pt-2.5 lg:hover:bg-royal-blue lg:hover:text-white transition-colors group/vote-btn"
             >
               <span>
                 <svg
@@ -249,13 +249,13 @@
               {{ request.description }}
             </p>
             <span
-              class="text-royal-blue bg-lightest-gray px-3 py-1 rounded-lg capitalize"
+              class="text-royal-blue font-bold bg-lightest-gray px-3 py-1 rounded-lg capitalize"
               >{{ request.category }}</span
             >
             <div class="flex items-center justify-between mt-4 md:hidden">
               <button
                 type="button"
-                class="inline-flex items-center gap-2 bg-lightest-gray rounded-lg px-3 py-1 active:bg-royal-blue active:text-white transition-colors group/vote-btn"
+                class="inline-flex font-bold text-deep-indigo items-center gap-2 bg-lightest-gray rounded-lg px-3 py-1 active:bg-royal-blue active:text-white transition-colors group/vote-btn"
               >
                 <span>
                   <svg
@@ -288,7 +288,7 @@
                     />
                   </svg>
                 </span>
-                <span>
+                <span class="font-bold text-deep-indigo">
                   {{ request.comments.length }}
                 </span>
               </span>
@@ -310,7 +310,7 @@
                   />
                 </svg>
               </span>
-              <span>
+              <span class="font-bold">
                 {{ request.comments.length }}
               </span>
             </span>

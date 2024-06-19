@@ -47,7 +47,7 @@ mat-icon {
 /* Interactive elements */
 .tag-button,
 .vote-button {
-  @apply text-s1 bg-lightest-gray rounded-custom-lg hover:bg-darkest-gray active:bg-royal-blue active:text-white transition-colors !important;
+  @apply text-s1 font-semibold bg-lightest-gray rounded-custom-lg hover:bg-darkest-gray active:bg-royal-blue active:text-white transition-colors !important;
 }
 
 app-vote-button {

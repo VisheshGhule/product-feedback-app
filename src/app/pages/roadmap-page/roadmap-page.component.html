@@ -77,7 +77,7 @@
       <p class="text-medium-gray text-center mt-20">No feedback available</p>
       } @else {
       <div>
-        <h2 class="text-deep-indigo text-s6">
+        <h2 class="text-deep-indigo text-s6 font-bold">
           <span class="capitalize">{{ selectedFeedbackStatus | async }}</span>
           &lpar;<span>{{
             getSelectedFeedbacksNumber(selectedFeedbackStatus | async)
@@ -169,7 +169,7 @@
     >
       @for (feedbackStatus of feedbackStatusGroups; track feedbackStatus) {
       <div>
-        <h2 class="text-deep-indigo text-s5">
+        <h2 class="text-deep-indigo text-s5 font-bold">
           <span class="capitalize">{{ feedbackStatus }}</span>
           &lpar;<span>{{ getSelectedFeedbacksNumber(feedbackStatus) }}</span
           >&rpar;
