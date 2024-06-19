@@ -7,56 +7,49 @@ module.exports = {
     },
     fontSize: {
       s1: [
-        "13px",
+        "0.813rem",
         {
           lineHeight: "19px",
-          fontWeight: "600",
         },
       ],
       s2: [
-        "14px",
+        "0.875rem",
         {
           lineHeight: "20px",
           letterSpacing: "-0.25",
-          fontWeight: "700",
         },
       ],
       s3: [
-        "15px",
+        "0.938rem",
         {
           lineHeight: "22px",
-          fontWeight: "400",
         },
       ],
       s4: [
-        "16px",
+        "1rem",
         {
           lineHeight: "23px",
-          fontWeight: "400",
         },
       ],
       s5: [
-        "18px",
+        "1.125rem",
         {
           lineHeight: "26px",
           letterSpacing: "-0.25",
-          fontWeight: "700",
         },
       ],
       s6: [
-        "20px",
+        "1.25rem",
         {
           lineHeight: "29px",
           letterSpacing: "-0.25",
-          fontWeight: "700",
         },
       ],
       s7: [
-        "24px",
+        "1.5rem",
         {
           lineHeight: "35px",
           letterSpacing: "-0.33",
-          fontWeight: "700",
         },
       ],
     },
