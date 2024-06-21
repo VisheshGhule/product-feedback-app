@@ -280,6 +280,7 @@
         >
       </div>
       } @else {
+        <!-- Suggestions -->
       <ul>
         @for (request of productFeedbackData.productRequests; track request.id)
         {
@@ -310,7 +311,7 @@
           </div>
           <div class="md:w-11/12">
             <h2
-              class="font-bold mb-2 md:mb-1 md:text-s5 lg:group-hover/request:text-royal-blue transition-colors"
+              class="text-deep-indigo font-bold mb-2 md:mb-1 md:text-s5 lg:group-hover/request:text-royal-blue transition-colors"
             >
               {{ request.title }}
             </h2>
