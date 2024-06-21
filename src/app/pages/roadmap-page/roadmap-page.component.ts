@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
 
 import { User } from './../../model/product';
@@ -31,7 +31,7 @@ export class RoadmapPageComponent {
     'live',
   ];
 
-  constructor() {
+  constructor(private _location: Location) {
     const productFeedbackData = data as ProductFeedbackData;
     this.productFeedbackData = productFeedbackData;
     this.productFeedbacks = this.filterFeedbacksByStatus('planned');
@@ -66,4 +66,7 @@ export class RoadmapPageComponent {
     }
   }
 
+  goBack(): void {
+    this._location.back();
+  }
 }

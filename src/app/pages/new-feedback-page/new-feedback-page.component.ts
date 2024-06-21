@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './new-feedback-page.component.html',
 })
-export class NewFeedbackPageComponent {}
+export class NewFeedbackPageComponent {
+  constructor(private _location: Location) {}
+
+  goBack(): void {
+    this._location.back();
+  }
+}

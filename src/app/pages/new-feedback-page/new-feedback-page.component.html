@@ -5,7 +5,8 @@
     <div class="py-5">
       <button
         type="button"
-        class="text-dusk-blue font-bold inline-flex gap-3.5 items-center"
+        class="text-dusk-blue font-bold inline-flex gap-3.5 items-center lg:hover:underline"
+        (click)="goBack()"
       >
         <svg
           width="6"
@@ -65,7 +66,7 @@
           >
           <select
             class="text-s3 text-deep-indigo rounded border-none focus:outline focus:outline-dusk-blue bg-lightest-gray px-4 md:px-5 py-3 mt-3.5 h-[48px]"
-            >
+          >
             <option value="">Select a category</option>
             <option value="feedback">Feedback</option>
             <option value="ui">UI</option>
@@ -103,4 +104,3 @@
     </div>
   </div>
 </div>
- 
