@@ -196,12 +196,17 @@
             @if (isSortMenuOpen) {
             <div
               class="absolute top-12 md:top-16 w-[15.9375rem] z-10 bg-white custom-shadow rounded-xl transition-all"
+              role="menu"
             >
               <ul class="text-dusk-blue text-s4 rounded-xl">
                 @for (option of sortMenuOptions; track option.name) {
-
-                <li class="border-b border-opacity-15 border-deep-indigo">
+                <li
+                  [ngClass]="{
+                    'border-b border-opacity-15 border-deep-indigo': !$last
+                  }"
+                >
                   <a
+                    role="menuitem"
                     [routerLink]="['/?sort=', option.href]"
                     class="px-6 py-3 lg:hover:text-rich-purple w-full flex items-center justify-between"
                     (click)="
