@@ -3,9 +3,25 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #dcdcdc #f2f4fe;
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #dcdcdc #f2f4fe;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+  }
+}
+
+*::-webkit-scrollbar {
+  @apply w-2.5 h-2.5;
+}
+
+*::-webkit-scrollbar-track {
+  @apply bg-none rounded-md;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply rounded-md bg-[#dcdcdc];
 }
 
 html,
