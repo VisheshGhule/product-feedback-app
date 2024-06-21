@@ -31,16 +31,58 @@
       </div>
       <ul class="mt-5 flex flex-col gap-1 list-disc list-inside">
         <li class="marker:text-peach flex justify-between">
-          <span>Planned</span>
-          <span class="text-s4 font-bold">2</span>
+          <span class="flex items-center">
+            <svg
+              width="8"
+              height="8"
+              viewBox="0 0 8 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="inline mr-4 fill-peach"
+            >
+              <circle cx="4" cy="4" r="4" />
+            </svg>
+            <span>Planned</span>
+          </span>
+          <span class="text-s4 font-bold">{{
+            getFeedbacksNumberByStatus("planned")
+          }}</span>
         </li>
         <li class="marker:text-rich-purple flex justify-between">
-          <span>In-Progress</span>
-          <span class="text-s4 font-bold">3</span>
+          <span class="flex items-center">
+            <svg
+              width="8"
+              height="8"
+              viewBox="0 0 8 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="inline mr-4 fill-rich-purple"
+            >
+              <circle cx="4" cy="4" r="4" />
+            </svg>
+            <span>In-Progress</span>
+          </span>
+          <span class="text-s4 font-bold">{{
+            getFeedbacksNumberByStatus("in-progress")
+          }}</span>
         </li>
         <li class="marker:text-bright-teal flex justify-between">
-          <span>Live</span>
-          <span class="text-s4 font-bold">1</span>
+          <span class="flex items-center">
+            <svg
+              width="8"
+              height="8"
+              viewBox="0 0 8 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="inline mr-4 fill-bright-teal"
+            >
+              <circle cx="4" cy="4" r="4" />
+            </svg>
+            <span>Live</span>
+          </span>
+          <span class="text-s4 font-bold">{{
+            getFeedbacksNumberByStatus("live")
+          }}</span>
         </li>
       </ul>
     </div>
@@ -87,19 +129,55 @@
       </div>
       <ul class="mt-5 flex flex-col gap-1 list-disc list-inside">
         <li class="marker:text-peach flex justify-between">
-          <span>Planned</span>
+          <span class="flex items-center">
+            <svg
+              width="8"
+              height="8"
+              viewBox="0 0 8 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="inline mr-4 fill-peach"
+            >
+              <circle cx="4" cy="4" r="4" />
+            </svg>
+            <span>Planned</span>
+          </span>
           <span class="text-s4 font-bold">{{
             getFeedbacksNumberByStatus("planned")
           }}</span>
         </li>
         <li class="marker:text-rich-purple flex justify-between">
-          <span>In-Progress</span>
+          <span class="flex items-center">
+            <svg
+              width="8"
+              height="8"
+              viewBox="0 0 8 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="inline mr-4 fill-rich-purple"
+            >
+              <circle cx="4" cy="4" r="4" />
+            </svg>
+            <span>In-Progress</span>
+          </span>
           <span class="text-s4 font-bold">{{
             getFeedbacksNumberByStatus("in-progress")
           }}</span>
         </li>
         <li class="marker:text-bright-teal flex justify-between">
-          <span>Live</span>
+          <span class="flex items-center">
+            <svg
+              width="8"
+              height="8"
+              viewBox="0 0 8 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="inline mr-4 fill-bright-teal"
+            >
+              <circle cx="4" cy="4" r="4" />
+            </svg>
+            <span>Live</span>
+          </span>
           <span class="text-s4 font-bold">{{
             getFeedbacksNumberByStatus("live")
           }}</span>
@@ -280,7 +358,7 @@
         >
       </div>
       } @else {
-        <!-- Suggestions -->
+      <!-- Suggestions -->
       <ul>
         @for (request of productFeedbackData.productRequests; track request.id)
         {
