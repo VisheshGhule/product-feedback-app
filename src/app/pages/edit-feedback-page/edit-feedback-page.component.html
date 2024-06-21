@@ -1,3 +1,10 @@
+<!--Selection Dialog -->
+<dialog
+  class="bg-transparent w-screen h-screen fixed z-10"
+  [open]="isDropdownOpen"
+  (click)="closeDropdown()"
+  (keydown)="closeDropdown()"
+></dialog>
 <div
   class="text-s1 md:text-s2 font-normal px-6 pt-5 pb-10 md:py-10 lg:py-20 min-h-full"
 >
@@ -50,7 +57,7 @@
       >
         Editing 'Add a dark theme option'
       </h1>
-      <form class="flex flex-col gap-7">
+      <form class="flex flex-col gap-7 -z-20">
         <label class="flex flex-col gap-1">
           <span class="font-bold text-deep-indigo">Feedback Title</span>
           <span class="text-medium-gray font-normal"
@@ -66,8 +73,73 @@
           <span class="text-medium-gray font-normal"
             >Choose a category for your feedback</span
           >
+          <div class="relative">
+            <button
+              type="button"
+              class="w-full text-s3 text-left text-deep-indigo rounded border-none flex justify-between items-center focus:outline-1 focus:outline focus:outline-royal-blue bg-lightest-gray px-4 md:px-5 py-3 mt-3.5 h-[48px]"
+              (mousedown)="toggleCategoryMenuDropdown(!isCategoryMenuOpen)"
+            >
+              <span>
+                {{ selectedCategory || "Select a category" }}
+              </span>
+              <svg
+                width="10"
+                height="7"
+                viewBox="0 0 10 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="stroke-royal-blue transition-transform"
+                [ngClass]="isCategoryMenuOpen ? 'rotate-180' : 'rotate-0'"
+              >
+                <path id="Path 2" d="M1 1L5 5L9 1" stroke-width="2" />
+              </svg>
+            </button>
+            @if (isCategoryMenuOpen) {
+            <div
+              class="absolute top-20 w-full z-20 bg-white custom-shadow rounded-xl transition-all"
+              role="menu"
+            >
+              <ul class="text-dusk-blue text-s4 rounded-xl">
+                @for (option of categoryOptions; track option) {
+                <li
+                  [ngClass]="{
+                    'border-b border-opacity-15 border-deep-indigo': !$last
+                  }"
+                >
+                  <button
+                    type="button"
+                    class="px-6 py-3 lg:hover:text-rich-purple w-full flex items-center justify-between"
+                    (click)="
+                      selectCategoryMenuOption($index);
+                      toggleCategoryMenuDropdown(!isCategoryMenuOpen)
+                    "
+                  >
+                    <span>{{ option }}</span>
+                    @if(option === selectedCategory) {
+                    <svg
+                      width="13"
+                      height="10"
+                      viewBox="0 0 13 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.968262 4.85894L4.49995 8.39062L11.9999 0.890625"
+                        stroke="#AD1FEA"
+                        stroke-width="2"
+                      />
+                    </svg>
+                    }
+                  </button>
+                </li>
+                }
+              </ul>
+            </div>
+            }
+          </div>
           <select
-            class="text-s3 text-deep-indigo rounded border-none focus:outline focus:outline-dusk-blue bg-lightest-gray px-4 md:px-5 py-3 mt-3.5 h-[48px]"
+            #categorySelect
+            class="text-s3 text-deep-indigo rounded border-none focus:outline focus:outline-dusk-blue bg-lightest-gray px-4 md:px-5 py-3 mt-3.5 h-[48px] hidden"
           >
             <option value="">Select a category</option>
             <option value="feedback">Feedback</option>
@@ -80,8 +152,76 @@
         <label class="flex flex-col gap-1">
           <span class="font-bold text-deep-indigo">Update Status</span>
           <span class="text-medium-gray font-normal">Change feature state</span>
+          <div class="relative">
+            <button
+              type="button"
+              class="w-full text-s3 text-left text-deep-indigo rounded border-none flex justify-between items-center focus:outline-1 focus:outline focus:outline-royal-blue bg-lightest-gray px-4 md:px-5 py-3 mt-3.5 h-[48px]"
+              (mousedown)="toggleStatusMenuDropdown(!isStatusMenuOpen)"
+            >
+              <span>
+                {{ selectedStatus || "Select a status" }}
+              </span>
+              <svg
+                width="10"
+                height="7"
+                viewBox="0 0 10 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="stroke-royal-blue transition-transform"
+                [ngClass]="isStatusMenuOpen ? 'rotate-180' : 'rotate-0'"
+              >
+                <path id="Path 2" d="M1 1L5 5L9 1" stroke-width="2" />
+              </svg>
+            </button>
+            @if (isStatusMenuOpen) {
+            <div
+              class="absolute top-20 w-full z-20 bg-white custom-shadow rounded-xl ease-in-out duration-300"
+              role="menu"
+              [ngClass]="
+                isStatusMenuOpen ? 'translate-y-0' : 'translate-y-full'
+              "
+            >
+              <ul class="text-dusk-blue text-s4 rounded-xl">
+                @for (option of statusOptions; track option) {
+                <li
+                  [ngClass]="{
+                    'border-b border-opacity-15 border-deep-indigo': !$last
+                  }"
+                >
+                  <button
+                    type="button"
+                    class="px-6 py-3 lg:hover:text-rich-purple w-full flex items-center justify-between"
+                    (click)="
+                      selectStatusMenuOption($index);
+                      toggleStatusMenuDropdown(!isStatusMenuOpen)
+                    "
+                  >
+                    <span>{{ option }}</span>
+                    @if(option === selectedStatus) {
+                    <svg
+                      width="13"
+                      height="10"
+                      viewBox="0 0 13 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.968262 4.85894L4.49995 8.39062L11.9999 0.890625"
+                        stroke="#AD1FEA"
+                        stroke-width="2"
+                      />
+                    </svg>
+                    }
+                  </button>
+                </li>
+                }
+              </ul>
+            </div>
+            }
+          </div>
           <select
-            class="text-s3 text-deep-indigo rounded border-none focus:outline focus:outline-dusk-blue bg-lightest-gray px-4 md:px-5 py-3 mt-3.5 h-[48px]"
+            #statusSelect
+            class="text-s3 text-deep-indigo rounded border-none focus:outline focus:outline-dusk-blue bg-lightest-gray px-4 md:px-5 py-3 mt-3.5 h-[48px] hidden"
           >
             <option value="">Select a status</option>
             <option value="suggestion">Suggestion</option>
