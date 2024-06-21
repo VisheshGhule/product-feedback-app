@@ -45,7 +45,7 @@ export class HomePageComponent {
     this.productFeedbackData = data as ProductFeedbackData;
   }
 
-  goTonewFeedBackPage(): void {
+  goToNewFeedBackPage(): void {
     this._router.navigateByUrl('/new-feedback');
   }
 
