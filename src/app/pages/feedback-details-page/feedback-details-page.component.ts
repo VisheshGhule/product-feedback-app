@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 
 import * as data from '../../../assets/data/data.json';
@@ -18,12 +19,16 @@ interface ProductFeedbackData {
 export class FeedbackDetailsPageComponent {
   feedback!: ProductRequest;
 
-  constructor(private _location: Location) {
+  constructor(private _location: Location, private _router: Router) {
     const productFeedbackData = data as ProductFeedbackData;
     this.feedback = productFeedbackData.productRequests[1];
   }
 
   goBack(): void {
     this._location.back();
+  }
+
+  goToEditFeedbackPage(): void {
+    this._router.navigateByUrl('/edit-feedback');
   }
 }
