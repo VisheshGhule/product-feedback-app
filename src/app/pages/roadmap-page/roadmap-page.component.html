@@ -33,9 +33,11 @@
     </button>
   </header>
   <main
-    class="h-[calc(100vh_-_110px)] md:h-[calc(100vh_-_175px)] lg:md:h-[calc(100vh_-_180px)] overflow-y-auto"
+    class="h-[calc(100vh_-_110px)] md:h-[calc(100vh_-_175px)] lg:md:h-[calc(100vh_-_180px)] overflow-y-auto relative"
   >
-    <div class="border-b border-b-darkest-gray flex justify-evenly md:hidden">
+    <div
+      class="border-b border-b-darkest-gray flex justify-evenly md:hidden sticky top-0 z-10 bg-silver-cloud"
+    >
       <button
         id="planned"
         type="button"
@@ -74,12 +76,12 @@
       </button>
     </div>
     <!-- Mobile UI -->
-    <div class="px-7 pt-7 overflow-y-scroll md:hidden">
+    <div>
       @if (productFeedbacks.length === 0) {
       <p class="text-medium-gray text-center mt-20">No feedback available</p>
       } @else {
-      <div>
-        <h2 class="text-deep-indigo text-s6 font-bold">
+      <div class="px-7 pt-7 overflow-y-auto md:hidden relative">
+        <h2 class="text-deep-indigo text-s6 font-bold sticky top-0">
           <span class="capitalize">{{ selectedFeedbackStatus | async }}</span>
           &lpar;<span>{{
             getSelectedFeedbacksNumber(selectedFeedbackStatus | async)
@@ -92,7 +94,10 @@
         <ul class="mt-6 flex flex-col gap-5 pb-28">
           @for (feedback of filterFeedbacksByStatus(selectedFeedbackStatus |
           async); track feedback.id) {
-          <li>
+          <li
+            (click)="goToFeedbackDetailsPage()"
+            (keypress)="goToFeedbackDetailsPage()"
+          >
             <div
               class="border-t-8 border-t-rich-purple rounded-t-md rounded-b-xl bg-white p-6"
             >
@@ -211,7 +216,7 @@
               </p>
               <h4 class="text-s1 lg:text-s4 text-deep-indigo font-bold mt-4">
                 <a
-                  href=""
+                  routerLink="/feedback-details"
                   class="lg:hover:text-royal-blue active:text-royal-blue transition-colors"
                   >{{ feedback.title }}</a
                 >

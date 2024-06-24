@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 import { User } from './../../model/product';
@@ -17,7 +17,7 @@ type ProductFeedbackStatus = 'suggestion' | 'planned' | 'in-progress' | 'live';
 @Component({
   selector: 'app-roadmap-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './roadmap-page.component.html',
 })
 export class RoadmapPageComponent {
@@ -73,5 +73,9 @@ export class RoadmapPageComponent {
 
   goToNewFeedbackPage(): void {
     this._router.navigateByUrl('/new-feedback');
+  }
+
+  goToFeedbackDetailsPage(): void {
+    this._router.navigateByUrl('/feedback-details');
   }
 }
