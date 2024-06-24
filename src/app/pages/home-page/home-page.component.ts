@@ -49,6 +49,10 @@ export class HomePageComponent {
     this._router.navigateByUrl('/new-feedback');
   }
 
+  goToFeedbackDetailsPage(): void {
+    this._router.navigateByUrl("/feedback-details");
+  }
+
   toggleAsideModal(): void {
     if (this.asideModal.nativeElement.open) {
       this.asideModal.nativeElement.close();
