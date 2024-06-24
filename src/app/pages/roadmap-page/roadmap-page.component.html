@@ -75,11 +75,38 @@
         Live &lpar;{{ getSelectedFeedbacksNumber("live") }}&rpar;
       </button>
     </div>
+    @if (productFeedbacks.length === 0) {
+    <div
+      class="h-[70%] md:h-[90%] lg:h-[84%] bg-white p-6 mx-6 mt-8 mb-12 md:mx-0 rounded-custom-lg flex flex-col items-center justify-center"
+    >
+      <div class="w-[6.375rem] h-[6.75rem] md:w-[8.1025rem] md:h-[8.54638rem]">
+        <img
+          src="./assets/images/shared/illustration-empty.svg"
+          alt="empty illustration"
+          fill
+        />
+      </div>
+      <div class="text-center mt-10 md:mt-5 max-w-[25.625rem]">
+        <h3 class="text-s5 font-bold md:text-s7 text-deep-indigo mb-4">
+          There is no feedback yet.
+        </h3>
+        <p class="text-s4 text-dusk-blue font-normal">
+          Got a suggestion? Found a bug that needs to be squashed? We love
+          hearing about new ideas to improve our app.
+        </p>
+      </div>
+      <button
+        id="edit-feedback"
+        type="button"
+        class="font-semibold bg-rich-purple text-lightest-gray px-5 md:px-6 py-3 mt-5 md:mt-12 rounded-xl hover:bg-opacity-70 transition-all"
+        (click)="goToNewFeedbackPage()"
+      >
+        + Add Feedback
+      </button>
+    </div>
+    } @else {
     <!-- Mobile UI -->
     <div>
-      @if (productFeedbacks.length === 0) {
-      <p class="text-medium-gray text-center mt-20">No feedback available</p>
-      } @else {
       <div class="px-7 pt-7 overflow-y-auto md:hidden relative">
         <h2 class="text-deep-indigo text-s6 font-bold sticky top-0">
           <span class="capitalize">{{ selectedFeedbackStatus | async }}</span>
@@ -168,7 +195,6 @@
           }
         </ul>
       </div>
-      }
     </div>
     <!-- Tablet and Desktop UI -->
     <div
@@ -276,5 +302,6 @@
       </div>
       }
     </div>
+    }
   </main>
 </div>
