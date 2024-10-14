@@ -1,0 +1,28 @@
+{
+  "name": "product-feedback-backend",
+  "version": "1.0.0",
+  "main": "main.ts",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "cross-env NODE_ENV=production node ./build/app.js",
+    "build": "tsc",
+    "prod:build": "npm install -g typescript && npm install && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["product", "feedback", "api", "typescript", "express"],
+  "author": "Prince Asamoah",
+  "license": "ISC",
+  "description": "An API for a product feedback app",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.5",
+    "nodemon": "^3.1.7",
+    "typescript": "^5.6.3"
+  }
+}
