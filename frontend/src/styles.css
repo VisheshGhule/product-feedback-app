@@ -35,7 +35,7 @@ body {
 
 app-root,
 app-home-page,
-app-new-feedback-page,
+app-add-feedback-page,
 app-feedback-details-page,
 app-roadmap-page {
   @apply block min-h-full;
