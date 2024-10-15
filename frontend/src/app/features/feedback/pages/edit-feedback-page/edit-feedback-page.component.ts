@@ -19,7 +19,7 @@ export class EditFeedbackPageComponent {
   isStatusMenuOpen = false;
   isDropdownOpen = false;
 
-  constructor(private _location: Location) {}
+  constructor(private readonly _location: Location) {}
 
   goBack(): void {
     this._location.back();

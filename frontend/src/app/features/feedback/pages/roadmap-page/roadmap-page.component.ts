@@ -3,9 +3,8 @@ import { CommonModule, Location } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
-import { User } from './../../model/product';
-import { ProductRequest } from '../../model/product';
-import * as data from '../../../assets/data/data.json';
+import { User, ProductRequest } from '../../../../model/product';
+import * as data from '../../data/feedbacks.json';
 
 interface ProductFeedbackData {
   currentUser: User;
@@ -32,7 +31,10 @@ export class RoadmapPageComponent {
     'live',
   ];
 
-  constructor(private _location: Location, private _router: Router) {
+  constructor(
+    private readonly _location: Location,
+    private readonly _router: Router
+  ) {
     const productFeedbackData = data as ProductFeedbackData;
     this.productFeedbackData = productFeedbackData;
     this.productFeedbacks = this.filterFeedbacksByStatus('planned');
@@ -72,10 +74,10 @@ export class RoadmapPageComponent {
   }
 
   goToNewFeedbackPage(): void {
-    this._router.navigateByUrl('/new-feedback');
+    this._router.navigateByUrl('/feedbacks/add');
   }
 
   goToFeedbackDetailsPage(): void {
-    this._router.navigateByUrl('/feedback-details');
+    this._router.navigateByUrl('/feedbacks/details');
   }
 }

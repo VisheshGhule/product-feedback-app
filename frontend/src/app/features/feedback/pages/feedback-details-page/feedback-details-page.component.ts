@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 
-import * as data from '../../../assets/data/data.json';
-import { ProductRequest, User } from '../../model/product';
+import * as data from '../../data/feedbacks.json';
+import { ProductRequest, User } from '../../../../model/product';
 
 interface ProductFeedbackData {
   currentUser: User;
@@ -19,7 +19,10 @@ interface ProductFeedbackData {
 export class FeedbackDetailsPageComponent {
   feedback!: ProductRequest;
 
-  constructor(private _location: Location, private _router: Router) {
+  constructor(
+    private readonly _location: Location,
+    private readonly _router: Router
+  ) {
     const productFeedbackData = data as ProductFeedbackData;
     this.feedback = productFeedbackData.productRequests[1];
   }
@@ -29,6 +32,6 @@ export class FeedbackDetailsPageComponent {
   }
 
   goToEditFeedbackPage(): void {
-    this._router.navigateByUrl('/edit-feedback');
+    this._router.navigateByUrl('/feedbacks/edit');
   }
 }

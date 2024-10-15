@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AddFeedbackPageComponent } from './add-feedback-page.component';
 
-import { HomePageComponent } from './home-page.component';
-
-describe('HomePageComponent', () => {
-  let component: HomePageComponent;
-  let fixture: ComponentFixture<HomePageComponent>;
+describe('AddFeedbackPageComponent', () => {
+  let component: AddFeedbackPageComponent;
+  let fixture: ComponentFixture<AddFeedbackPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomePageComponent]
+      imports: [AddFeedbackPageComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(HomePageComponent);
+    fixture = TestBed.createComponent(AddFeedbackPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

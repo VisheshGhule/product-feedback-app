@@ -2,18 +2,18 @@ import { CommonModule, Location } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-new-feedback-page',
+  selector: 'app-add-feedback-page',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './new-feedback-page.component.html',
+  templateUrl: './add-feedback-page.component.html',
 })
-export class NewFeedbackPageComponent {
+export class AddFeedbackPageComponent {
   @ViewChild('categorySelect') categorySelect!: ElementRef<HTMLSelectElement>;
   categoryOptions = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'];
   selectedCategory = 'Feature';
   isMenuOpen = false;
 
-  constructor(private _location: Location) {}
+  constructor(private readonly _location: Location) {}
 
   goBack(): void {
     this._location.back();

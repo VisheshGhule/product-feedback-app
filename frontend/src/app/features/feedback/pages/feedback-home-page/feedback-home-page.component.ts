@@ -2,11 +2,11 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { TagButtonComponent } from '../../components/buttons/tag-button/tag-button.component';
-import { ButtonComponent } from '../../components/buttons/button/button.component';
-import { SortMenuComponent } from '../../components/sort-menu/sort-menu.component';
-import { ProductRequest, User } from '../../model/product';
-import * as data from '../../../assets/data/data.json';
+import { TagButtonComponent } from '../../../../components/buttons/tag-button/tag-button.component';
+import { ButtonComponent } from '../../../../components/buttons/button/button.component';
+import { SortMenuComponent } from '../../../../components/sort-menu/sort-menu.component';
+import { ProductRequest, User } from '../../../../model/product';
+import * as data from '../../data/feedbacks.json';
 
 interface ProductFeedbackData {
   currentUser: User;
@@ -25,9 +25,9 @@ type ProductFeedbackStatus = 'suggestion' | 'planned' | 'in-progress' | 'live';
     ButtonComponent,
     SortMenuComponent,
   ],
-  templateUrl: './home-page.component.html',
+  templateUrl: './feedback-home-page.component.html',
 })
-export class HomePageComponent {
+export class FeedbackHomePageComponent {
   @ViewChild('asideModal') asideModal!: ElementRef<HTMLDialogElement>;
   productRequests: ProductRequest[] = [];
   productFeedbackData!: ProductFeedbackData;
@@ -41,16 +41,16 @@ export class HomePageComponent {
   ];
   selectedSortType = this.sortMenuOptions[0];
 
-  constructor(private _router: Router) {
+  constructor(private readonly _router: Router) {
     this.productFeedbackData = data as ProductFeedbackData;
   }
 
   goToNewFeedBackPage(): void {
-    this._router.navigateByUrl('/new-feedback');
+    this._router.navigateByUrl('/feedbacks/add');
   }
 
   goToFeedbackDetailsPage(): void {
-    this._router.navigateByUrl("/feedback-details");
+    this._router.navigateByUrl("/feedbacks/details");
   }
 
   toggleAsideModal(): void {
