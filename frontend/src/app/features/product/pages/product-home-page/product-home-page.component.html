@@ -1,139 +1,372 @@
+<!-- Aside Menu Dialog -->
 <dialog
   #asideModal
-  class="h-screen fixed top-[4.594rem] left-auto backdrop:outline-red-50 backdrop:outline backdrop:bg-[#000] backdrop:top-[4.594rem] backdrop:bg-opacity-60 m-0 ease-in-out duration-300"
+  class="h-screen fixed top-[4.594rem] left-auto backdrop:bg-[#000] backdrop:top-[4.594rem] backdrop:bg-opacity-60 m-0 ease-in-out duration-300"
   [ngClass]="isOpen ? 'translate-x-0 has-backdrop' : 'translate-x-full'"
   (click)="toggleAsideModal()"
   (keypress)="toggleAsideModal()"
 >
   <aside
     aria-label="feedback-navigation"
-    class="w-full h-full bg-lightest-gray flex flex-col items-center px-6 py-6 z-10"
+    class="w-full h-full bg-lightest-gray flex flex-col items-center px-6 py-6 gap-5"
   >
-    <nav class="flex flex-col gap-2 mt-5 w-[13.938rem]" aria-label="aside navigation">
-      <a
-        routerLink="/dashboard"
-        routerLinkActive="bg-deep-indigo text-white"
-        class="text-dusk-blue px-2 py-1.5 w-full font-semibold flex items-end gap-2 text-lg hover:bg-deep-indigo hover:text-white rounded-md"
-      >
-        <mat-icon>home</mat-icon>
-        <span> Home </span>
-      </a>
-      <a
-        routerLink="/products"
-        routerLinkActive="bg-deep-indigo text-white"
-        class="text-dusk-blue px-2 py-1.5 w-full font-semibold flex items-end gap-2 text-lg hover:bg-deep-indigo hover:text-white rounded-md"
-      >
-        <mat-icon>inventory_2</mat-icon>
-        Product Board
-      </a>
-      <a
-        routerLink="/feedbacks"
-        routerLinkActive="bg-deep-indigo text-white"
-        class="text-dusk-blue px-2 py-1.5 w-full font-semibold flex items-end gap-2 text-lg hover:bg-deep-indigo hover:text-white rounded-md"
-      >
-        <mat-icon>feedback</mat-icon>
-        Feedbacks
-      </a>
-    </nav>
+    <div
+      class="p-6 bg-white rounded-lg w-[13.938rem] lg:w-full flex flex-wrap gap-2 lg:gap-3.5"
+    >
+      <h2 class="text-gray-600 font-semibold mb-4">Categories</h2>
+      <div class="flex flex-wrap gap-2 lg:gap-3.5">
+        @for (categoryItem of categories; track categoryItem.id) {
+        <app-tag-button>{{ categoryItem.name }}</app-tag-button>
+        }
+      </div>
+    </div>
   </aside>
 </dialog>
+<!-- Sort Menu Dialog -->
+<dialog
+  [open]="isSortMenuOpen"
+  class="bg-transparent w-full h-full absolute z-10"
+  (click)="toggleSortMenuDropdown(isSortMenuOpen)"
+  (keydown)="toggleSortMenuDropdown(isSortMenuOpen)"
+></dialog>
 <div
   class="w-full min-h-screen lg:w-11/12 xl:w-10/12 flex flex-col lg:flex-row lg:gap-5 md:px-10 md:py-16 md:pb-0 lg:mx-auto relative"
 >
   <aside
     aria-label="feedback-navigation"
-    class="hidden lg:flex lg:flex-col gap-2 lg:gap-6 mb-10 h-full lg:w-[15.9375rem]"
+    class="hidden md:flex lg:flex-col gap-2 lg:gap-6 mb-10 h-[11.125rem] lg:h-fit lg:w-[15.9375rem]"
   >
     <div
-      class="p-6 text-white rounded-lg lg:h-[8.5625rem] w-full bg-tablet-header bg-cover flex flex-col justify-end"
+      class="p-6 text-white rounded-lg w-4/12 lg:h-[8.5625rem] lg:w-full bg-tablet-header bg-cover flex flex-col justify-end"
     >
       <h1 class="text-s6 font-bold">Frontend Mentor</h1>
       <h2 class="text-s3 opacity-75">Product Board</h2>
     </div>
-    <div
-      class="p-6 bg-white rounded-lg w-4/12 lg:w-full h-full flex flex-wrap gap-2 lg:gap-4 md:hidden lg:flex"
-    >
-      <nav class="flex flex-col gap-2 w-full" aria-label="main navigation">
-        <a
-          routerLink="/dashboard"
-          routerLinkActive="bg-deep-indigo text-white"
-          class="text-dusk-blue px-2 py-1.5 w-full font-semibold flex items-end gap-2 text-lg hover:bg-deep-indigo hover:text-white rounded-md"
-        >
-          <mat-icon>home</mat-icon>
-          <span> Home </span>
-        </a>
-        <a
-          routerLink="/products"
-          routerLinkActive="bg-deep-indigo text-white"
-          class="text-dusk-blue px-2 py-1.5 w-full font-semibold flex items-end gap-2 text-lg hover:bg-deep-indigo hover:text-white rounded-md"
-        >
-          <mat-icon>inventory_2</mat-icon>
-          Products
-        </a>
-        <a
-          routerLink="/feedbacks"
-          routerLinkActive="bg-deep-indigo text-white"
-          class="text-dusk-blue px-2 py-1.5 w-full font-semibold flex items-end gap-2 text-lg hover:bg-deep-indigo hover:text-white rounded-md"
-        >
-          <mat-icon>feedback</mat-icon>
-          Feedbacks
-        </a>
-      </nav>
+    <div class="p-6 bg-white rounded-lg w-4/12 lg:w-full">
+      <h2 class="text-gray-600 font-semibold mb-4">Categories</h2>
+      <div class="flex flex-wrap gap-2 lg:gap-3.5">
+        @for (categoryItem of categories; track categoryItem.id) {
+        <app-tag-button>{{ categoryItem.name }}</app-tag-button>
+        }
+      </div>
     </div>
   </aside>
   <div class="lg:w-10/12 relative flex-grow">
-    <header
-      class="text-white flex justify-between items-center py-4 px-6 bg-mobile-header bg-cover lg:hidden"
-    >
-    <div>
-      <h1 class="text-s3 font-bold">Frontend Mentor</h1>
-      <h2 class="text-s1 font-medium opacity-75">Product Board</h2>
-    </div>
-    <button
-      class="relative group"
-      type="button"
-      (click)="toggleAsideModal()"
-      (keypress)="toggleAsideModal()"
-    >
+    <header>
       <div
-        class="relative flex overflow-hidden items-center justify-center transform transition-all duration-200"
+        class="text-white flex justify-between items-center py-4 px-6 bg-mobile-header bg-cover md:hidden"
       >
-        <div
-          class="flex flex-col justify-between w-[20px] h-[18px] transform transition-all duration-300 origin-center overflow-hidden"
+        <div>
+          <h1 class="text-s3 font-bold">Frontend Mentor</h1>
+          <h2 class="text-s1 font-medium opacity-75">Product Board</h2>
+        </div>
+        <button
+          class="relative group"
+          type="button"
+          (click)="toggleAsideModal()"
+          (keypress)="toggleAsideModal()"
         >
           <div
-            class="bg-white h-[3px] w-5 transform transition-all duration-300 origin-left"
-            [ngClass]="{ 'translate-x-10': isOpen }"
-          ></div>
-          <div
-            class="bg-white h-[3px] w-5 rounded transform transition-all duration-300 delay-75"
-            [ngClass]="{ 'translate-x-10': isOpen }"
-          ></div>
-          <div
-            class="bg-white h-[3px] w-5 transform transition-all duration-300 origin-left delay-150"
-            [ngClass]="{ 'translate-x-10': isOpen }"
-          ></div>
-          <div
-            class="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 flex w-0"
-            [ngClass]="{ '-translate-x-10 w-12': !isOpen }"
+            class="relative flex overflow-hidden items-center justify-center transform transition-all duration-200"
           >
             <div
-              class="absolute bg-white h-[3px] w-5 transform transition-all duration-500 delay-300"
-              [ngClass]="!isOpen ? 'rotate-0' : 'rotate-45'"
-            ></div>
+              class="flex flex-col justify-between w-[20px] h-[18px] transform transition-all duration-300 origin-center overflow-hidden"
+            >
+              <div
+                class="bg-white h-[3px] w-5 transform transition-all duration-300 origin-left"
+                [ngClass]="{ 'translate-x-10': isOpen }"
+              ></div>
+              <div
+                class="bg-white h-[3px] w-5 rounded transform transition-all duration-300 delay-75"
+                [ngClass]="{ 'translate-x-10': isOpen }"
+              ></div>
+              <div
+                class="bg-white h-[3px] w-5 transform transition-all duration-300 origin-left delay-150"
+                [ngClass]="{ 'translate-x-10': isOpen }"
+              ></div>
+              <div
+                class="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 flex w-0"
+                [ngClass]="{ '-translate-x-10 w-12': !isOpen }"
+              >
+                <div
+                  class="absolute bg-white h-[3px] w-5 transform transition-all duration-500 delay-300"
+                  [ngClass]="!isOpen ? 'rotate-0' : 'rotate-45'"
+                ></div>
+                <div
+                  class="absolute bg-white h-[3px] w-5 transform transition-all duration-500 delay-300"
+                  [ngClass]="!isOpen ? '-rotate-0' : '-rotate-45'"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div
+        class="bg-deep-indigo px-6 py-2 md:p-3.5 md:px-3 md:rounded-custom-lg flex justify-between items-center"
+      >
+        <div class="flex gap-8 items-center">
+          <div class="md:flex items-center gap-4 px-2.5 hidden">
+            <img
+              src="/assets/images/shared/icon-suggestions.svg"
+              alt="bulb icon"
+            />
+            <span class="text-s5 font-bold text-white"
+              >{{ products.length }} Products</span
+            >
+          </div>
+          <div class="relative">
+            <button
+              type="button"
+              class="text-s2 text-darkest-gray bg-deep-indigo rounded-custom-lg inline-flex place-items-center gap-1 hover:opacity-60 transition-opacity"
+              (click)="toggleSortMenuDropdown(isSortMenuOpen)"
+            >
+              <span class="font-normal">Sort by :</span>
+              <span class="font-bold"> {{ selectedSortType.name }}</span>
+              <svg
+                width="9"
+                height="7"
+                viewBox="0 0 9 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="stroke-darkest-gray transition-transform"
+                [ngClass]="{ 'rotate-180': isSortMenuOpen }"
+              >
+                <path d="M1 6L5 2L9 6" stroke-width="2" />
+              </svg>
+            </button>
+            @if (isSortMenuOpen) {
             <div
-              class="absolute bg-white h-[3px] w-5 transform transition-all duration-500 delay-300"
-              [ngClass]="!isOpen ? '-rotate-0' : '-rotate-45'"
-            ></div>
+              class="absolute top-12 md:top-16 w-[15.9375rem] z-10 bg-white custom-shadow rounded-xl transition-all"
+              role="menu"
+            >
+              <ul class="text-dusk-blue text-s4 rounded-xl">
+                @for (option of sortMenuOptions; track option.name) {
+                <li
+                  [ngClass]="{
+                    'border-b border-opacity-15 border-deep-indigo': !$last
+                  }"
+                >
+                  <a
+                    role="menuitem"
+                    [routerLink]="['/?sort=', option.href]"
+                    class="px-6 py-3 lg:hover:text-rich-purple w-full flex items-center justify-between"
+                    (click)="
+                      selectSortType($index);
+                      toggleSortMenuDropdown(isSortMenuOpen)
+                    "
+                  >
+                    <span>{{ option.name }}</span>
+                    @if(option.name === selectedSortType.name) {
+                    <svg
+                      width="13"
+                      height="10"
+                      viewBox="0 0 13 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.968262 4.85894L4.49995 8.39062L11.9999 0.890625"
+                        stroke="#AD1FEA"
+                        stroke-width="2"
+                      />
+                    </svg>
+                    }
+                  </a>
+                </li>
+                }
+              </ul>
+            </div>
+            }
           </div>
         </div>
+        <app-button
+          customClass="bg-rich-purple"
+          (click)="goToNewProductPage()"
+          (keyPress)="goToNewProductPage()"
+          >+ Add Product</app-button
+        >
       </div>
-    </button>
     </header>
     <main
       class="text-s1 h-[calc(100vh_-_128px)] md:h-[calc(100vh_-_375px)] lg:h-[calc(100vh_-_156px)] px-5 pt-8 pb-12 md:pb-14 lg:pb-30 md:px-0 md:pt-0 md:mt-5 overflow-y-auto"
     >
-      Content Area
+      <ul>
+        @for (productItem of products; track productItem.id) {
+        <li
+          class="bg-white rounded-lg p-6 md:p-8 mb-3 md:flex md:gap-10 lg:hover:cursor-pointer group/request"
+        >
+          <div class="md:w-11/12">
+            <h2
+              class="text-deep-indigo font-bold mb-2 md:mb-1 md:text-s5 lg:group-hover/request:text-royal-blue transition-colors"
+            >
+              {{ productItem.name }}
+            </h2>
+            <p
+              class="text-medium-gray font-normal mb-3 md:mb-5 md:text-s4 truncate"
+            >
+              {{ productItem.description }}
+            </p>
+            <span
+              class="text-royal-blue font-bold bg-lightest-gray px-3 py-1 rounded-lg capitalize"
+              >{{ productItem.category }}</span
+            >
+            <div class="flex items-center justify-between mt-4 md:hidden">
+              <div class="flex items-center gap-1.5">
+                <svg
+                  width="18"
+                  height="16"
+                  viewBox="0 0 18 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2.62074 16H1.34534L2.24718 15.0895C2.73344 14.5986 3.0371 13.9601 3.11873 13.2674C1.03637 11.8878 0 9.88917 0 7.79388C0 3.92832 3.51913 0 9.0305 0C14.8692 0 18 3.61479 18 7.45522C18 11.321 14.8361 14.9333 9.0305 14.9333C8.0135 14.9333 6.95226 14.7963 6.00478 14.5448C5.10787 15.4735 3.89262 16 2.62074 16Z"
+                    fill="#CDD2EE"
+                  />
+                </svg>
+                <span class="font-bold text-deep-indigo">
+                  {{ productItem.feedbackCount }}
+                </span>
+              </div>
+             
+              <div class="flex gap-2">
+                <button
+                  type="button"
+                  class="w-5 h-5 group/edit"
+                  id="edit-product"
+                >
+                  <span class="sr-only">Edit Product</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="stroke-gray-300 fill-gray-300 transition-colors lg:group-hover/edit:stroke-gray-500 lg:group-hover/edit:fill-gray-500"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z"
+                        fill="inherit"
+                      ></path>
+                    </g>
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  id="delete-product"
+                  class="group/delete w-5 h-5"
+                >
+                  <span class="sr-only">Delete Product</span>
+                  <svg
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    stroke="#ef4444"
+                    class="stroke-red-300 fill-red-300 transition-colors lg:group-hover/delete:stroke-red-500 lg:group-hover/delete:fill-red-500"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <path
+                        d="M5.755,20.283,4,8H20L18.245,20.283A2,2,0,0,1,16.265,22H7.735A2,2,0,0,1,5.755,20.283ZM21,4H16V3a1,1,0,0,0-1-1H9A1,1,0,0,0,8,3V4H3A1,1,0,0,0,3,6H21a1,1,0,0,0,0-2Z"
+                      ></path>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:flex flex-col justify-between items-end">
+            <div class="flex gap-2">
+              <button
+                type="button"
+                class="w-5 h-5 group/edit"
+                id="edit-product"
+              >
+                <span class="sr-only">Edit Product</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="stroke-gray-300 fill-gray-300 transition-colors lg:group-hover/edit:stroke-gray-500 lg:group-hover/edit:fill-gray-500"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z"
+                      fill="inherit"
+                    ></path>
+                  </g>
+                </svg>
+              </button>
+              <button
+                type="button"
+                id="delete-product"
+                class="group/delete w-5 h-5"
+              >
+                <span class="sr-only">Delete Product</span>
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#ef4444"
+                  class="stroke-red-300 fill-red-300 transition-colors lg:group-hover/delete:stroke-red-500 lg:group-hover/delete:fill-red-500"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M5.755,20.283,4,8H20L18.245,20.283A2,2,0,0,1,16.265,22H7.735A2,2,0,0,1,5.755,20.283ZM21,4H16V3a1,1,0,0,0-1-1H9A1,1,0,0,0,8,3V4H3A1,1,0,0,0,3,6H21a1,1,0,0,0,0-2Z"
+                    ></path>
+                  </g>
+                </svg>
+              </button>
+            </div>
+            <div class="inline-flex items-center gap-1.5">
+              <svg
+                width="18"
+                height="16"
+                viewBox="0 0 18 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2.62074 16H1.34534L2.24718 15.0895C2.73344 14.5986 3.0371 13.9601 3.11873 13.2674C1.03637 11.8878 0 9.88917 0 7.79388C0 3.92832 3.51913 0 9.0305 0C14.8692 0 18 3.61479 18 7.45522C18 11.321 14.8361 14.9333 9.0305 14.9333C8.0135 14.9333 6.95226 14.7963 6.00478 14.5448C5.10787 15.4735 3.89262 16 2.62074 16Z"
+                  fill="#CDD2EE"
+                />
+              </svg>
+              <div class="font-bold text-deep-indigo">
+                {{ productItem.feedbackCount }}
+              </div>
+            </div>
+          </div>
+        </li>
+        } @empty {
+        <p class="text-center">No Products Available</p>
+        }
+      </ul>
     </main>
   </div>
 </div>
