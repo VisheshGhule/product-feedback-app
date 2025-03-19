@@ -1,4 +1,6 @@
 <button type="button" [class]="defaultClass.concat(' ' + customClass)">
+  <ng-content></ng-content>
+
   <mat-icon class="w-2">chevron_left</mat-icon>
   <ng-content></ng-content>
 </button>
