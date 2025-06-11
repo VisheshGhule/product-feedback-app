@@ -1,17 +1,18 @@
 #!/bin/bash
 
-# Load Node.js via NVM
+# Load NVM and set Node version
 export NVM_DIR="/home/ubuntu/.nvm"
 source "$NVM_DIR/nvm.sh"
 nvm use 20
 
+# Go to backend folder
 cd /home/ubuntu/product-feedback-app/backend || exit
 
-# Ensure correct ownership
+# Fix file ownership just in case
 sudo chown -R ubuntu:ubuntu .
 
-# Install all dependencies including cross-env and typescript
+# Install dependencies (including cross-env and typescript)
 npm install
 
-# Build the app (compile TypeScript to JavaScript)
+# Build TypeScript code to /build folder
 npm run build
