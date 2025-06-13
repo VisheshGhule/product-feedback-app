@@ -1,9 +1,12 @@
 import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const db = mysql.createPool({
-  host: 'database-2.cla2koaki4vx.us-west-2.rds.amazonaws.com',
-  port: 3306,
-  user: 'vishesh',
-  password: 'visheshghule',
-  database: 'database-2' // replace with your actual DB name (avoid hyphens if possible)
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
