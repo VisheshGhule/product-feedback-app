@@ -1,35 +1,3 @@
-# Product Feedback
-
-## Description
-
-**Product Feedback** is a web application that allows users to review products and provide recommendations. The platform is designed to help users share their opinions on products and receive feedback from others in a user-friendly environment.
-
-## Features
-
-- Feedback Management (View, Create, Update)
-
-## Monorepo Structure
-
-This repository is structured as a monorepo, containing both the frontend and backend codebases:
-
-- **Frontend**: Built with Angular 17, NgRx for state management, and styled using TailwindCSS.
-- **Backend**: Built with Node.js (Express.js) and uses PostgreSQL as the database.
-
-## Tech Stack
-
-### Frontend
-
-- **Framework**: Angular
-- **State Management**: NgRx
-- **Styling**: TailwindCSS
-
-### Backend
-
-- **Framework**: Node.js (Express.js)
-- **Database**: PostgreSQL
-
-## Getting Started
-
 # 📦 Full-Stack Node.js + Angular Deployment on AWS (EC2, RDS, S3, CI/CD)
 
 ## 🧠 Introduction
