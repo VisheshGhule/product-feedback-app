@@ -7,14 +7,14 @@
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
-      "url": "http://<private-ip>:<PORT>/"
+      "url": "http://localhost:<PORT>/"
     },
     {
       "name": "ng test",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: test",
-      "url": "http://<private-ip>:<PORT>/debug.html"
+      "url": "http://localhost:<PORT>/debug.html"
     }
   ]
 }
