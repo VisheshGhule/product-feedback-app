@@ -54,7 +54,7 @@ It covers real-world AWS architecture — including private/public subnets, Appl
 - Deployed on EC2 in a private subnet (behind ALB)
 
 ### Database:
-- Amazon RDS (PostgreSQL or MySQL)
+- Amazon RDS (MySQL)
 
 ### CI/CD:
 - AWS CodePipeline
