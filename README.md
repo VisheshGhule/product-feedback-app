@@ -95,34 +95,6 @@ Now go to the AWS Console:
 - Launch EC2 instance in a private subnet for backend
 - Set up a Bastion Host (EC2 in public subnet) for SSH access
 - Install Node.js and NVM on the backend EC2
-- Create `appspec.yml` and a `scripts/` folder with:
-  - install_dependencies.sh
-  - start_server.sh
-- Make scripts executable:
-
-```bash
-chmod +x scripts/*.sh
-```
-
-Example appspec.yml:
-```yaml
-version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /home/ubuntu/product-feedback-app
-
-hooks:
-  AfterInstall:
-    - location: scripts/install_dependencies.sh
-      timeout: 300
-      runas: ubuntu
-  ApplicationStart:
-    - location: scripts/start_server.sh
-      timeout: 300
-      runas: ubuntu
-```
-
 - Create an IAM role for CodeDeploy and assign it to the EC2 instance
 - Set up CodeDeploy application and deployment group
 - Set up CodePipeline:
@@ -164,7 +136,7 @@ DB_NAME=product_feedback
 ## 🧪 Testing
 
 - Angular Frontend:  
-  http://your-s3-bucket-url or CloudFront URL
+  http://your-s3-bucket-url 
 
 - Backend API:  
   http://your-alb-dns-name/
