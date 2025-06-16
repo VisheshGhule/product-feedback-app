@@ -30,69 +30,205 @@ This repository is structured as a monorepo, containing both the frontend and ba
 
 ## Getting Started
 
-### Prerequisites
+# 📦 Full-Stack Node.js + Angular Deployment on AWS (EC2, RDS, S3, CI/CD)
 
-- Node.js
-- NPM
-- PostgreSQL
+## 🧠 Introduction
 
-### Installation
+This is the complete repository and deployment setup for my full-stack project where I deployed an Angular frontend and Node.js backend using Amazon EC2, RDS, S3, and fully automated CI/CD pipelines via CodePipeline and CodeDeploy.
 
-1. Clone the repository:
+It covers real-world AWS architecture — including private/public subnets, Application Load Balancer, Bastion Host, and end-to-end automation from GitHub push to production release.
 
-   ```bash
-   git clone https://github.com/prince-t-asamoah/product-feedback-app.git
+📖 Read the full guide on Hashnode:  
+👉 [https://visheshblog.hashnode.dev/project-2-deploying-fullstack-nodejs-angular-with-ec2-rds-and-s3](https://visheshblog.hashnode.dev/project-2-deploying-fullstack-nodejs-angular-with-ec2-rds-and-s3)
 
-2. Navigate into the project directory:
+---
 
-    ```bash
-    cd product-feedback-app
+## 🛠️ Tech Stack
 
-### Frontend Setup
+### Frontend:
+- Angular
+- Hosted on Amazon S3 (Static Website Hosting)
 
-1. Navigate to the frontend directory:
+### Backend:
+- Node.js (Express.js)
+- Deployed on EC2 in a private subnet (behind ALB)
 
-    ```bash
-    cd frontend
+### Database:
+- Amazon RDS (PostgreSQL or MySQL)
 
-2. Install dependencies:
+### CI/CD:
+- AWS CodePipeline
+- AWS CodeDeploy
+- GitHub (as source provider)
 
-    ```bash
-    npm install
+### Networking:
+- VPC with Public & Private Subnets
+- NAT Gateway + Bastion Host
+- Application Load Balancer (ALB)
 
-3. Run the development server:
+---
 
-    ```bash
-    npm start
+## ⚙️ Setup Instructions
 
-4. Open your browser and navigate to <http://localhost>:<your_preferred_port>.
+### 1. Clone the Repository
 
-### Backend Setup
+```bash
+git clone https://github.com/VisheshGhule/product-feedback-app.git
+cd product-feedback-app
+```
 
-1. Navigate to the backend directory:
+---
 
-    ```bash
-    cd backend
+### 2. Frontend Deployment (Angular → S3)
 
-2. Install dependencies:
+```bash
+cd frontend
+nvm install 20
+nvm use 20
+npm install
+npm run build
+```
 
-    ```bash
-    npm install
+This will generate the production-ready files in:
+```
+frontend/dist/product-feedback-app/
+```
 
-3. Set up the environment variables:
+Now go to the AWS Console:
 
-    Create a ``.env`` file in the ``backend`` directory with the following details:
+- Create an S3 Bucket
+- Enable Static Website Hosting
+- Set index.html as the default root document
+- Add this bucket policy for public read access:
 
-    ```env
-    DB_HOST=your_database_host
-    DB_USER=your_database_user
-    DB_PASS=your_database_password
-    DB_NAME=your_database_name
-    PORT=your_preferred_port
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::your-bucket-name/*"
+    }
+  ]
+}
+```
 
-4. Run the server:
+- Upload contents of dist/product-feedback-app (not the folder itself) into the bucket
+- (Optional) Set up CloudFront for HTTPS and global CDN
 
-    ```bash
-    npm start
+---
 
-5. The backend server will be available at <http://localhost>:<your_preferred_port>.
+### 3. Backend Deployment (Node.js → EC2)
+
+- Create a VPC with private and public subnets
+- Launch EC2 instance in a private subnet for backend
+- Set up a Bastion Host (EC2 in public subnet) for SSH access
+- Install Node.js and NVM on the backend EC2
+- Create `appspec.yml` and a `scripts/` folder with:
+  - install_dependencies.sh
+  - start_server.sh
+- Make scripts executable:
+
+```bash
+chmod +x scripts/*.sh
+```
+
+Example appspec.yml:
+```yaml
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/product-feedback-app
+
+hooks:
+  AfterInstall:
+    - location: scripts/install_dependencies.sh
+      timeout: 300
+      runas: ubuntu
+  ApplicationStart:
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: ubuntu
+```
+
+- Create an IAM role for CodeDeploy and assign it to the EC2 instance
+- Set up CodeDeploy application and deployment group
+- Set up CodePipeline:
+  - Source: GitHub
+  - Deploy: CodeDeploy
+
+→ Every GitHub push triggers an automatic deployment via CodePipeline.
+
+---
+
+### 4. Amazon RDS (MySQL/PostgreSQL)
+
+- Create a DB instance in private subnet
+- Configure security groups to allow backend EC2 access
+- Add database credentials in `.env` file in backend
+
+Example:
+```
+DB_HOST=mydb.abc123xyz.us-west-2.rds.amazonaws.com
+DB_USER=admin
+DB_PASS=yourpassword
+DB_NAME=product_feedback
+```
+
+- Make sure dotenv is configured to load this file in `app.ts`
+
+---
+
+### 5. Application Load Balancer (ALB)
+
+- Create an ALB in public subnet
+- Create a target group with backend EC2 on port 3000
+- Create a listener for port 80 → forward to target group
+- Health check should point to `/` on port 3000
+- ALB DNS will publicly expose your backend
+
+---
+
+## 🧪 Testing
+
+- Angular Frontend:  
+  http://your-s3-bucket-url or CloudFront URL
+
+- Backend API:  
+  http://your-alb-dns-name/
+
+Verify with:
+```bash
+curl http://your-alb-dns-name/
+```
+
+---
+
+## 🗺️ CI/CD Architecture
+
+GitHub → CodePipeline → CodeDeploy → EC2 (Backend) → RDS  
+Frontend → S3 → (Optional) CloudFront → Browser
+
+---
+
+## ✅ Summary
+
+- Clone the repo
+- Build and deploy Angular frontend to S3
+- Set up EC2 for backend using CodeDeploy & CodePipeline
+- Create and connect to Amazon RDS
+- Configure Load Balancer for public access
+- Enjoy a scalable, automated full-stack deployment on AWS 🚀
+
+📖 Full blog with screenshots & step-by-step guide:  
+👉 [Hashnode Guide](https://visheshblog.hashnode.dev/project-2-deploying-fullstack-nodejs-angular-with-ec2-rds-and-s3)
+
+
+
+
+
+
