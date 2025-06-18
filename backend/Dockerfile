@@ -16,7 +16,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # ✅ Copy Angular build output from the correct path
-COPY --from=build /app/dist/product-feedback-app/browser /usr/share/nginx/html
+COPY --from=build /app/dist/product-feedback-app/browser/ /usr/share/nginx/html/
 
 EXPOSE 80
 
