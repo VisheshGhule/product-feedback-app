@@ -6,7 +6,8 @@ COPY package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY --from=build /app/dist/product-feedback-app/browser /usr/share/nginx/html
+
 
 RUN npm run build
 
