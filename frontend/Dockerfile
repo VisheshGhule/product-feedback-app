@@ -13,7 +13,7 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Copy only the build output
-COPY --from=build /app/dist/product-feedback-app/browser ./dist
+COPY --from=build /dist/product-feedback-app/browser ./dist
 
 # Copy server file
 COPY server.js ./
