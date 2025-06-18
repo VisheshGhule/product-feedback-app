@@ -12,10 +12,10 @@ RUN npm run build
 # Stage 2: Serve with NGINX
 FROM nginx:alpine
 
-# Remove default NGINX content
+# Remove default content
 RUN rm -rf /usr/share/nginx/html/*
 
-# ✅ Copy ONLY browser content to NGINX html directory
+# ✅ Copy only the CONTENTS of /browser, not the folder itself
 COPY --from=build /app/dist/product-feedback-app/browser/ /usr/share/nginx/html/
 
 EXPOSE 80
