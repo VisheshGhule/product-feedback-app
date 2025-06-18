@@ -4,8 +4,8 @@ const app = express();
 
 const PORT = process.env.PORT || 4200;
 
-// ✅ Correct path based on Docker image structure
-const DIST_DIR = path.join(__dirname, 'dist/product-feedback-app/browser');
+// ✅ FIXED PATH — copy goes to /app/browser
+const DIST_DIR = path.join(__dirname, 'browser');
 
 app.use(express.static(DIST_DIR));
 
