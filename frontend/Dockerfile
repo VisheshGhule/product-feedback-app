@@ -15,7 +15,7 @@ FROM nginx:alpine
 # Remove default content
 RUN rm -rf /usr/share/nginx/html/*
 
-# ✅ Copy only the CONTENTS of /browser, not the folder itself
+# ✅ Copy only the CONTENTS of the /browser folder
 COPY --from=build /app/dist/product-feedback-app/browser/ /usr/share/nginx/html/
 
 EXPOSE 80
