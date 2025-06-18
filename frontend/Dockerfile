@@ -15,7 +15,7 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Copy only built Angular browser files into a clean path
-COPY --from=build /app/dist/product-feedback-app/browser ./browser
+COPY --from=build /app/dist/product-feedback-app/browser/index.html ./browser/index.html
 
 # Copy server.js into container
 COPY server.js ./
