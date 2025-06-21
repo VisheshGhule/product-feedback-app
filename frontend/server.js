@@ -1,5 +1,5 @@
-const express = require('express');
 const path = require('path');
+const express = require('express');
 const app = express();
 
 const PORT = process.env.PORT || 4200;
@@ -12,5 +12,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`App running at http://localhost:${PORT}`);
+  console.log(`Frontend running at http://localhost:${PORT}`);
 });
