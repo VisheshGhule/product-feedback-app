@@ -4,8 +4,7 @@ const app = express();
 
 const PORT = process.env.PORT || 4200;
 
-// ✅ Adjusted to match where Angular build files are placed in Docker
-const DIST_DIR = path.join(__dirname, 'dist');
+const DIST_DIR = path.resolve(__dirname, 'dist/product-feedback-app/browser');
 
 app.use(express.static(DIST_DIR));
 
@@ -13,6 +12,6 @@ app.get('/*', (req, res) => {
   res.sendFile(path.resolve(DIST_DIR, 'index.html'));
 });
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
   console.log(`Frontend running at http://localhost:${PORT}`);
 });
