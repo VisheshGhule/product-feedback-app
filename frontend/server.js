@@ -3,7 +3,9 @@ const path = require('path');
 const app = express();
 
 const PORT = process.env.PORT || 4200;
-const DIST_DIR = path.join(__dirname, 'dist/product-feedback-app/browser');
+
+// ✅ Adjusted to match where Angular build files are placed in Docker
+const DIST_DIR = path.join(__dirname, 'dist');
 
 app.use(express.static(DIST_DIR));
 
