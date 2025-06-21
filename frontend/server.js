@@ -1,11 +1,9 @@
-const express = require('express');
 const path = require('path');
+const express = require('express');
 const app = express();
 
 const PORT = process.env.PORT || 4200;
-
-// ✅ FIXED PATH — copy goes to /app/browser
-const DIST_DIR = path.join(__dirname, 'browser');
+const DIST_DIR = path.join(__dirname, 'dist/product-feedback-app/browser');
 
 app.use(express.static(DIST_DIR));
 
@@ -13,6 +11,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(DIST_DIR, 'index.html'));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Frontend running at http://localhost:${PORT}`);
 });
