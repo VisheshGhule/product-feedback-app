@@ -5,10 +5,9 @@ const app = express();
 const PORT = process.env.PORT || 4200;
 const DIST_DIR = path.join(__dirname, 'dist/product-feedback-app/browser');
 
-// Serve static assets
 app.use(express.static(DIST_DIR));
 
-// TEMP FIX: Only match root
+// Explicit route for safety — no wildcards
 app.get('/', (req, res) => {
   res.sendFile(path.join(DIST_DIR, 'index.html'));
 });
