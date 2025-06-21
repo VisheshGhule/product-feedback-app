@@ -1,10 +1,16 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 
+const PORT = process.env.PORT || 4200;
+const DIST_DIR = path.join(__dirname, 'dist/product-feedback-app/browser');
+
+app.use(express.static(DIST_DIR));
+
 app.get('/', (req, res) => {
-  res.send("Hello world");
+  res.sendFile(path.join(DIST_DIR, 'index.html'));
 });
 
-app.listen(4200, '0.0.0.0', () => {
-  console.log("Running on 4200");
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`App running at http://localhost:${PORT}`);
 });
