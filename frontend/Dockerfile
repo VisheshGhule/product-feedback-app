@@ -1,26 +1,21 @@
-# Stage 1: Build the Angular app
-FROM node:20 AS builder
-
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-# Stage 2: Serve with Node.js + Express
+# Use Node image
 FROM node:20
 
+# Set working directory
 WORKDIR /app
 
-# Copy only the compiled Angular output
-COPY --from=builder /app/dist/app ./dist/product-feedback-app/browser
-
-# Copy server and only what's needed to serve
+# Copy package.json and install deps
 COPY package*.json ./
+RUN npm install
 
-# Install only production dependencies (skip Angular CLI, etc.)
-RUN npm install --only=production
+# Copy rest of the code
+COPY . .
 
+# Install Angular CLI globally (needed for ng serve)
+RUN npm install -g @angular/cli
+
+# Expose default Angular port
 EXPOSE 4200
 
-CMD ["node", "server.js"]
+# Start the Angular app
+CMD ["ng", "serve", "--host", "0.0.0.0"]
