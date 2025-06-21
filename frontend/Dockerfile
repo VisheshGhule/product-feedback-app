@@ -14,13 +14,13 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy only built Angular browser files into a clean path
-COPY --from=build /app/dist/product-feedback-app/browser/index.html ./browser/index.html
+# Copy built Angular files from previous stage
+COPY --from=build /app/dist/product-feedback-app/browser ./dist
 
-# Copy server.js into container
-COPY server.js ./
+# Copy server file
+COPY server.js .
 
-# Install express only (no need for dev deps)
+# Install only express
 RUN npm install express
 
 EXPOSE 4200
