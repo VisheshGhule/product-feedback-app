@@ -16,7 +16,6 @@ WORKDIR /app
 COPY --from=builder /app/dist/app ./dist/product-feedback-app/browser
 
 # Copy server and only what's needed to serve
-COPY server.js ./
 COPY package*.json ./
 
 # Install only production dependencies (skip Angular CLI, etc.)
