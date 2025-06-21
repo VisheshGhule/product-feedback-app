@@ -1,3 +1,4 @@
+// server.js
 const path = require('path');
 const express = require('express');
 const app = express();
@@ -5,10 +6,10 @@ const app = express();
 const PORT = process.env.PORT || 4200;
 const DIST_DIR = path.join(__dirname, 'dist/product-feedback-app/browser');
 
-// ✅ Serve static files correctly
+// Serve static files from the browser build
 app.use(express.static(DIST_DIR));
 
-// ✅ This route must be correct
+// Catch-all route — this line MUST be correct
 app.get('*', (req, res) => {
   res.sendFile(path.join(DIST_DIR, 'index.html'));
 });
