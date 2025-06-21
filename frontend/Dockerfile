@@ -1,27 +1,16 @@
-# Stage 1: Build Angular app
-FROM node:20-alpine AS build
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install express@4
-
-COPY . .
-RUN npm run build
-
-# Stage 2: Serve with Express
+# Stage 2: Serve using Express
 FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy built Angular files from previous stage
-COPY --from=build /app/dist/product-feedback-app/browser ./dist
+# Copy built Angular files from build stage
+COPY --from=build /app/dist/product-feedback-app/browser ./dist/product-feedback-app/browser
 
-# Copy server file
-COPY server.js .
+# Copy the Express server script
+COPY server.js ./
 
-# Install only express
-RUN npm install express
+# ✅ Install express version 4 explicitly to avoid path-to-regexp issues
+RUN npm install express@4
 
 EXPOSE 4200
 
