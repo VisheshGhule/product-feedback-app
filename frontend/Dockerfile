@@ -9,7 +9,7 @@ COPY --from=build /app/dist/product-feedback-app/browser ./dist/product-feedback
 # Copy the Express server script
 COPY server.js ./
 
-# ✅ Install express version 4 explicitly to avoid path-to-regexp issues
+# ✅ Install only Express v4 to avoid path-to-regexp issue
 RUN npm install express@4
 
 EXPOSE 4200
