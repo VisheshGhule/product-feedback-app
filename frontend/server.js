@@ -7,7 +7,7 @@ const DIST_DIR = path.join(__dirname, 'dist/product-feedback-app/browser');
 
 app.use(express.static(DIST_DIR));
 
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(DIST_DIR, 'index.html'));
 });
 
